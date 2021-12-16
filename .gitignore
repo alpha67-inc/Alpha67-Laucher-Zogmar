@@ -1,6 +1,7 @@
 .idea
 __pycache__
 build
+examples
 .idea/vcs.xml
 .idea/vcs.xml
 .idea/workspace.xml
