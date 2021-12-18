@@ -1,33 +1,76 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 1px;
-  grid-auto-rows: 100px;
-  grid-template-areas:
-    "a a a a b b b b"
-    "a a a a d d d d"
-    "c c c c d d d d"
-    "c c c c d d d d";
-  align-items: start;
+body {
+  background-image: url('test.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
-.item1 {
-  grid-area: a;
+
+.wrapper{
+  position: fixed;
+  top: 90%;
+  left: 85%;
+  transform: translate(-50%, -50%);
 }
-.item2 {
-  grid-area: b;
+
+.link_wrapper{
+  position: relative;
 }
-.item3 {
-  grid-area: c;
-}
-.item4 {
-  grid-area: d;
-    background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
+
+a{
+  display: block;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  background: rgb(86, 159, 255);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid rgb(32, 44, 148);
+  transition: all .3s;
 }
+
+.icon{
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 0;
+  top: 0;
+  z-index: -1;
+  transition: all .3s;
+}
+
+.icon svg{
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  transform: rotate(-45deg);
+  fill: #2ecc71;
+  transition: all .3s;
+}
+
+a:hover{
+  width: 200px;
+  border: 3px solid #2ecc71;
+  background: transparent;
+  color: #2ecc71;
+}
+
+a:hover + .icon{
+  border: 3px solid #2ecc71;
+  right: -25%;
+}
+
+a:active + .icon{
+  /* set time duration to your needs */
+
+  border: 3px solid #000000;
+  right: -200%;
+}
+
 

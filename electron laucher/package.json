@@ -1,7 +1,7 @@
 {
-  "name": "Eelectron-quick-start",
+  "name": "Alpha67 Laucher",
   "version": "1.0.0",
-  "description": "A minimal Eelectron application",
+  "description": "This is the laucher for Alpha67 server",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
