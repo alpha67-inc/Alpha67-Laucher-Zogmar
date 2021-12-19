@@ -1,9 +1,15 @@
 import eel
+import random
 
 
 # Set web files folder
 eel.init('web')
-  # Call a Javascript function
+
+
+@eel.expose
+def test():
+	print("ok")
+	return "ok"
 
 options = {
 	'mode': 'custom',
