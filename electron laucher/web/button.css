@@ -18,7 +18,7 @@ body {
 
 a{
   display: block;
-  width: 250px;
+  width: 240px;
   height: 50px;
   line-height: 50px;
   font-weight: bold;
@@ -67,6 +67,7 @@ a:hover + .icon{
 }
 
 a:active + .icon{
+
   /* set time duration to your needs */
 
   border: 3px solid #000000;

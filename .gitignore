@@ -1,15 +1,4 @@
-.idea
-__pycache__
-build
-examples
-.idea/vcs.xml
-.idea/vcs.xml
-.idea/workspace.xml
-__pycache__/downloader.cpython-38.pyc
-__pycache__/test.cpython-38.pyc
-.idea/workspace.xml
-.idea/workspace.xml
-app/microsoftLogin.spec
-app/dist/microsoftLogin.exe
-app/logs/latest.log
-app/microsoftLogin.exe
+electron laucher/node_modules
+electron laucher/.vscode
+
+

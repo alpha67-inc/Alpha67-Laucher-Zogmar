@@ -13,3 +13,14 @@ async function run() {
     console.log('Got this from Python: ' + n);
     alert(n);  
 }
+
+var select = document.getElementById("selectNumber"); 
+var options = ["1", "2", "3", "4", "5"]; 
+
+// Optional: Clear all existing options first:
+select.innerHTML = "";
+// Populate list with options:
+for(var i = 0; i < options.length; i++) {
+    var opt = options[i];
+    select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
+}
