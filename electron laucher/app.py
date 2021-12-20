@@ -32,7 +32,8 @@ options = {
 	'args': ['node_modules/electron/dist/electron.exe', '.']
 }
 
-#print('Got this from Javascript:', n)
+
 
 eel.start('hello.html', mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'])
+
 #eel.start('hello.html')

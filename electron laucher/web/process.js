@@ -1,6 +1,9 @@
 eel.expose(js_random);
 function js_random() {
-    return Math.random();
+    var select = document.getElementById('versiong');
+    var value = select.options[select.selectedIndex].value;
+    alert(value) // en
+    return "value";
 }
 
 async function run() {
@@ -14,13 +17,18 @@ async function run() {
     alert(n);  
 }
 
-var select = document.getElementById("selectNumber"); 
-var options = ["1", "2", "3", "4", "5"]; 
 
-// Optional: Clear all existing options first:
-select.innerHTML = "";
-// Populate list with options:
-for(var i = 0; i < options.length; i++) {
-    var opt = options[i];
-    select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
-}
+eel.sendVersions()(function(settings){
+    var version = settings;
+    var select = document.getElementById("versiong"); 
+  
+  
+    
+    // Optional: Clear all existing options first:
+    select.innerHTML = "";
+    // Populate list with options:
+    for(var i = 0; i < version.length; i++) {
+        var opt = version[i];
+        select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
+    }
+      });

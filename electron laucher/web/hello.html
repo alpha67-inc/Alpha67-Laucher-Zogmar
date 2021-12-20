@@ -27,40 +27,22 @@
 
 </div>
 
-<label for="cars">Choose a car:</label>
+<!-- Hover #3 -->
+<div class="box-3">
+  <div class="btn btn-three">
+    <span>Connection</span>
+  </div>
+</div>
 
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
 
-<select id="selectNumber">
+<select name="versiong" class="versiong" id="versiong">
   <option>Choose a number</option>
 </select>
-<script>
 
-eel.sendVersions()(function(settings){
-        var version = settings;
-        alert(settings)
-        var select = document.getElementById("selectNumber"); 
-
-
-        
-        // Optional: Clear all existing options first:
-        select.innerHTML = "";
-        // Populate list with options:
-        for(var i = 0; i < version.length; i++) {
-            var opt = version[i];
-            select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
-  }
-    });
-  
-  </script>
-
-
-
+<select name="motor" class="motor" id="motor">
+  <option value="vanilla">Vanilla</option>
+  <option value="forge">Forge</option>
+</select>
 
     </body>
 </html>
