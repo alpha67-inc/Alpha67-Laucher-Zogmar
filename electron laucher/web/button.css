@@ -16,7 +16,7 @@ body {
   position: relative;
 }
 
-a{
+.link_wrapper{
   display: block;
   width: 240px;
   height: 50px;
@@ -54,19 +54,19 @@ a{
   transition: all .3s;
 }
 
-a:hover{
+.link_wrapper:hover{
   width: 200px;
   border: 3px solid #2ecc71;
   background: transparent;
   color: #2ecc71;
 }
 
-a:hover + .icon{
+.link_wrapper:hover + .icon{
   border: 3px solid #2ecc71;
   right: -25%;
 }
 
-a:active + .icon{
+.link_wrapper:active + .icon{
 
   /* set time duration to your needs */
 

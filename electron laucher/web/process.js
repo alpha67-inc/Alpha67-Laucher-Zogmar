@@ -1,20 +1,28 @@
-eel.expose(js_random);
-function js_random() {
-    var select = document.getElementById('versiong');
+eel.expose(returnInfo);
+function returnInfo(){
+    var select = document.getElementById('motor');
     var value = select.options[select.selectedIndex].value;
-    alert(value) // en
-    return "value";
+    var e = document.getElementById("versiong");
+    var strUser = e.options[e.selectedIndex].text;
+    const info = [value, strUser]
+    return info;
 }
 
-async function run() {
-    // Synchronous call must be inside function marked 'async'
+eel.expose(js_random);
+function js_random() {
+  return Math.random();
+}
 
-    // Get result returned synchronously by
-    //  using 'await' and passing nothing in second brackets
-    //        v                   v
-    let n = await eel.test()();
-    console.log('Got this from Python: ' + n);
-    alert(n);  
+
+async function run() {
+    //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
+    eel.prints()(function(settings){
+        var version = settings;
+          });
+}
+
+async function connection() {
+  window.location.href = "connection/connection.html";
 }
 
 
@@ -26,6 +34,7 @@ eel.sendVersions()(function(settings){
     
     // Optional: Clear all existing options first:
     select.innerHTML = "";
+
     // Populate list with options:
     for(var i = 0; i < version.length; i++) {
         var opt = version[i];
