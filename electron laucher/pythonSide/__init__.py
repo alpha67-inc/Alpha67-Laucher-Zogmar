@@ -1,6 +1,8 @@
 import os
 import minecraft_launcher_lib
 import requests
+import os
+import eel
  
  #creation de fichier si il ne sont pas créée
 def start():
@@ -43,5 +45,10 @@ def getVersions():
     for i in vlist["versions"]:
         returnlist.append({"id": i["id"], "type": i["type"]})
     return returnlist
+
+@eel.expose
+def startMicrosoft():
+    print(os.getcwd())
+    os.startfile('microsoftLogin.exe')
 
 
