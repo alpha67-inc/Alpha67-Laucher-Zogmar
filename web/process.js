@@ -22,7 +22,6 @@ async function run() {
 }
 
 async function connection() {
-  window.localStorage.removeItem('invalid');
   window.location.href = "connection/connection.html";
 }
 

@@ -15,11 +15,12 @@
 
       <div class="wrapper">
         <div class="container">
-          <h1>Please type your Username</h1>
+          <h1>Please login with mojang</h1>
           
           <form class="form">
-            <input type="text" placeholder="Username" id="usercrack">
-            <button type="submit" id="login-button" onclick="crackLogin()">Login</button>
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+            <button type="login-button" id="login-button" onclick="mojangLogin()">Login</button>
           </form>
         </div>
         

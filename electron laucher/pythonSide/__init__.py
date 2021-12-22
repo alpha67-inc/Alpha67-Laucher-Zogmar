@@ -3,6 +3,8 @@ import minecraft_launcher_lib
 import requests
 import os
 import eel
+from pythonSide.appComponment.mojang import *
+from pythonSide.appComponment.crack import *
  
  #creation de fichier si il ne sont pas créée
 def start():
@@ -35,6 +37,26 @@ def start():
         os.makedirs(MYDIR)
         print("created folder : ", MYDIR)
         createDirectory("alpha", "C:/Users/" + user + "\AppData\Roaming\.alpha67/")
+    try:
+        with open("C:/Users/" + user + "\AppData\Roaming\.alpha67/alpha/select.json", "r") as jsonFile:
+            data = json.load(jsonFile)
+            print(data)
+    except:
+        x = {
+
+        "mojang": [
+            {"connect": "False", "select": "False"}
+        ],
+        "microsoft": [
+            {"connect": "False", "select": "False"}
+        ],
+        "crack": [
+            {"connect": "False", "select": "False"}
+        ]
+            }
+
+        with open("C:/Users/" + user + "\AppData\Roaming\.alpha67/alpha/select.json", "w") as jsonFile:
+                json.dump(x,jsonFile)
 
 def get_library_version() -> str:
     return "4.0"
@@ -51,4 +73,10 @@ def startMicrosoft():
     print(os.getcwd())
     os.startfile('microsoftLogin.exe')
 
+@eel.expose
+def startMojangLogin():
+    upass()
 
+@eel.expose
+def startCrackLogin():
+    crack()

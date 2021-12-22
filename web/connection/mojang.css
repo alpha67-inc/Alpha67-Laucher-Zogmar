@@ -17,7 +17,6 @@
 
 }
 
-
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -261,5 +260,3 @@
 	  opacity: 0.7;
 	}
   }
-
-

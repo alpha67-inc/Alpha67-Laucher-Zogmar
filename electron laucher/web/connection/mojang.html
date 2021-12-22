@@ -5,22 +5,23 @@
         <link rel="stylesheet" href="mojang.css" />
         <title>Alpha67 Laucher select</title>
         <script type="text/javascript" src="/eel.js"></script>
-        <script type="text/javascript" src="mojang.js"></script>
+        <script type="text/javascript" src="connect.js"></script>
 
 
     </head>
     
 
-    <body>
+    <body onload="hide();">
 
       <div class="wrapper">
         <div class="container">
           <h1>Please login with mojang</h1>
           
           <form class="form">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button type="submit" id="login-button">Login</button>
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+            <h2 id="info" class="info">Identifiant invalide</h2>
+            <button type="login-button" id="login-button" onclick="mojangLogin()">Login</button>
           </form>
         </div>
         
@@ -37,6 +38,7 @@
           <li></li>
         </ul>
       </div>
+
 
 
 
