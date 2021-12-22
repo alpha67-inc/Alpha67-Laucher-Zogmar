@@ -1,4 +1,6 @@
 electron laucher/node_modules
 electron laucher/.vscode
+examples
 
 
+.idea/inspectionProfiles/Project_Default.xml
