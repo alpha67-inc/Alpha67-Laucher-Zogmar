@@ -84,4 +84,4 @@ def startCrackLogin():
 
 @eel.expose
 def StartMinecraft():
-    start()
+    lauch()

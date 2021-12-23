@@ -1,16 +1,58 @@
 import os
 import minecraft_launcher_lib
 import subprocess
+import eel
+import json
+import uuid
 
-def start():
+def getSelectVersion():
+        user = os.getlogin()
+        try:
+            with open("C:/Users/" + user + "\AppData\Roaming\.alpha67/alpha/select.json", "r") as jsonFile:
+                data = json.load(jsonFile)
+                crack = data["crack"][0]["select"]
+                microsoft = data["microsoft"][0]["select"]
+                mojang = data["mojang"][0]["select"]
+
+            if crack == "True":
+                return "crack"
+            elif microsoft == "True":
+                return "microsoft"
+            elif mojang == "True":
+                return "mojang"
+            else:
+                print("please connects")
+
+        except:
+            print("please connect")
+
+
+def execute_command(command):
+        # QProcess.start takes as first argument the program and as second the list of arguments
+        # So we need the filter the program from the command
+        arguments = command[1:]
+        # Deactivate the launch button
+        #self.launch_button.setEnabled(False)
+        # Clear the text  field
+        #self.setPlainText("")
+        process = QProcess(self)
+        # Activate the launch button when Minecraft is closed
+        #self.process.finished.connect(lambda: self.play.setEnabled(True))
+        # Connect the function to display the output
+        #self.process.readyRead.connect(self.dataReady)
+        # Start Minecraft
+        process.start("java", arguments)
+
+def start(n):
     user = os.getlogin()
 
     def maximum(max_value, value):
         max_value[0] = value
 
-    version = self.ui.comboBox_2.currentText()
+    version = n[1]
+    motor = n[0]
 
-    if version == "Alpha67-server":
+    if version == "alpha67":
         directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
         print('start alpha laucher to connect to the server')
         user = os.getlogin()
@@ -26,7 +68,7 @@ def start():
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             # print(int(percent))
-            self.ui.download.setValue(percent)
+            #self.ui.download.setValue(percent)
 
         callback = {
             "setStatus": lambda text: print(text),
@@ -34,8 +76,8 @@ def start():
             "setMax": lambda value: maximum(max_value, value)
         }
 
-        self.ui.download.show()
-        self.ui.play.hide()
+        #self.ui.download.show()
+        #self.ui.play.hide()
         print(motor)
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
         print(forge_version)
@@ -80,10 +122,10 @@ def start():
                     except:
                         None
 
-        self.ui.play.show()
-        self.ui.download.hide()
+        #self.ui.play.show()
+        #self.ui.download.hide()
 
-        login = self.getSelectVersion()
+        login = getSelectVersion()
         print(login)
 
         ###########
@@ -120,7 +162,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:" + forgeLauch)
                 directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -145,7 +187,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:" + forgeLauch)
                 directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -175,7 +217,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 try:
                     print("crack, lauching minecraft, version:" + forgeLauch)
@@ -189,8 +231,9 @@ def start():
                     None
 
     else:
-        motor = self.ui.comboBox_3.currentText()
-        version = self.ui.comboBox_2.currentText()
+        version = n[0]
+        
+        motor = n[1]
         user = os.getlogin()
         def maximum(max_value, value):
             max_value[0] = value
@@ -201,7 +244,7 @@ def start():
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             #print(int(percent))
-            self.ui.download.setValue(percent)
+            #self.ui.download.setValue(percent)
 
         callback = {
             "setStatus": lambda text: print(text),
@@ -210,8 +253,8 @@ def start():
         }
 
 
-        self.ui.download.show()
-        self.ui.play.hide()
+        #self.ui.download.show()
+        #self.ui.play.hide()
         print(motor)
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
         print(forge_version)
@@ -253,10 +296,10 @@ def start():
                     except:
                         None
 
-        self.ui.play.show()
-        self.ui.download.hide()
+        #self.ui.play.show()
+        #self.ui.download.hide()
 
-        login = self.getSelectVersion()
+        login = getSelectVersion()
         print(login)
 
 
@@ -295,7 +338,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:"+forgeLauch)
                 directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -321,7 +364,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:"+forgeLauch)
                 directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -351,7 +394,7 @@ def start():
             if motor == "vanilla":
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
-                self.execute_command(command)
+                execute_command(command)
             elif motor == "Forge":
                 try:
                     print("crack, lauching minecraft, version:"+forgeLauch)
@@ -363,3 +406,7 @@ def start():
                     subprocess.call(minecraft_command)
                 except:
                     None
+
+
+def lauch():
+    eel.returnInfo()(lambda n: start(n))

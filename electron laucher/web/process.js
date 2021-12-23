@@ -14,6 +14,7 @@ function js_random() {
 }
 
 
+
 async function run() {
     //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
     eel.StartMinecraft()
