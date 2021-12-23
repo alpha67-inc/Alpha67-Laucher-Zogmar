@@ -16,9 +16,11 @@ function js_random() {
 
 async function run() {
     //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
-    eel.prints()(function(settings){
-        var version = settings;
-          });
+    eel.StartMinecraft()
+
+          /*(function(settings){
+            var version = settings;
+              })*/
 }
 
 async function connection() {

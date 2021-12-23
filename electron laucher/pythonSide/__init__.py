@@ -5,6 +5,7 @@ import os
 import eel
 from pythonSide.appComponment.mojang import *
 from pythonSide.appComponment.crack import *
+from pythonSide.appComponment.start import *
  
  #creation de fichier si il ne sont pas créée
 def start():
@@ -80,3 +81,7 @@ def startMojangLogin():
 @eel.expose
 def startCrackLogin():
     crack()
+
+@eel.expose
+def StartMinecraft():
+    start()

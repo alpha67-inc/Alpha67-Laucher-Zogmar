@@ -29,6 +29,8 @@ def crack():
             with open("C:/Users/" + user + "\AppData\Roaming\.alpha67/alpha/select.json", "w") as jsonFile:
                 json.dump(data, jsonFile)
 
+            eel.finish()
+
         except:
             None
 

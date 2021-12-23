@@ -37,8 +37,13 @@ async function mojangLogin(){
 }
 
 async function crackLogin(){
-    alert("ok")
     eel.startCrackLogin()
+    var userName = document.getElementById("usercrack").value;
+    if (userName == "")
+    {
+        alert("veuillez entrez un pseudo");
+    }
+
 
 }
 
