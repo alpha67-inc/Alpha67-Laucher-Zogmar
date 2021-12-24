@@ -25,7 +25,7 @@ function microsoft() {
     eel.startMicrosoft();
   }
 
-  eel.expose(finish)
+eel.expose(finish)
 function finish()
 {
     window.location.href = "../hello.html";

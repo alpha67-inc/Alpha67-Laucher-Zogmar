@@ -4,6 +4,7 @@ import subprocess
 import eel
 import json
 import uuid
+import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 
 def getSelectVersion():
         user = os.getlogin()
@@ -30,18 +31,18 @@ def getSelectVersion():
 def execute_command(command):
         # QProcess.start takes as first argument the program and as second the list of arguments
         # So we need the filter the program from the command
-        arguments = command[1:]
+        #arguments = command[1:]
         # Deactivate the launch button
         #self.launch_button.setEnabled(False)
         # Clear the text  field
         #self.setPlainText("")
-        process = QProcess(self)
+        ###process = QProcess(self)
         # Activate the launch button when Minecraft is closed
         #self.process.finished.connect(lambda: self.play.setEnabled(True))
         # Connect the function to display the output
         #self.process.readyRead.connect(self.dataReady)
         # Start Minecraft
-        process.start("java", arguments)
+        subprocess.call(command)
 
 def start(n):
     user = os.getlogin()
@@ -51,6 +52,7 @@ def start(n):
 
     version = n[1]
     motor = n[0]
+    print("motor is : ", motor)
 
     if version == "alpha67":
         directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -62,7 +64,7 @@ def start(n):
         def maximum(max_value, value):
             max_value[0] = value
 
-        print('start minecraft')
+        print('start minecraft for server connection')
         max_value = [0]
 
         def updateBar(value, maxValue):
@@ -79,6 +81,7 @@ def start(n):
         #self.ui.download.show()
         #self.ui.play.hide()
         print(motor)
+        mpDownloader.down()
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
         print(forge_version)
 
@@ -160,6 +163,7 @@ def start(n):
             }
 
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
@@ -185,6 +189,7 @@ def start(n):
             }
 
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
@@ -215,6 +220,7 @@ def start(n):
             print(forge_version)
             print(motor)
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
@@ -231,9 +237,9 @@ def start(n):
                     None
 
     else:
-        version = n[0]
+        version = n[1]
         
-        motor = n[1]
+        motor = n[0]
         user = os.getlogin()
         def maximum(max_value, value):
             max_value[0] = value
@@ -267,11 +273,14 @@ def start(n):
         print(forgeLauch)
 
         #if you lauche minecraft vanilla
+        print("the motor is : ",motor)
         if motor == "vanilla":
+            print("dowload of minecraft vanilla : ",version)
+            directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
             minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
 
         #if you lauche ;inecrqft forge
-        if motor == "Forge":
+        if motor == "forge":
             if forge_version == "None":
                 print("version non disponible de forge")
 
@@ -289,6 +298,7 @@ def start(n):
                 if checkVersionDoawnload() == None:
                     try:
                         print("doawnloading:"+forgeLauch)
+                        directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                         minecraft_launcher_lib.forge.install_forge_version(forge_version, directory,
                                                                             callback=callback)
                         print(forgeLauch)
@@ -336,12 +346,13 @@ def start(n):
 
 
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:"+forgeLauch)
-                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
+                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
@@ -362,12 +373,13 @@ def start(n):
             }
 
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
             elif motor == "Forge":
                 print("crack, lauching minecraft, version:"+forgeLauch)
-                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
+                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
@@ -392,13 +404,14 @@ def start(n):
             print(forge_version)
             print(motor)
             if motor == "vanilla":
+                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
             elif motor == "Forge":
                 try:
                     print("crack, lauching minecraft, version:"+forgeLauch)
-                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
+                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                     minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                         forgeLauch, directory, options)
                     print(minecraft_command)
