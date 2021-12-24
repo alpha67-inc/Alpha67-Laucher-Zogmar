@@ -29,7 +29,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 3px solid rgb(32, 44, 148);
-  transition: all .3s;
+  transition: all .5s;
 }
 
 .icon{
@@ -41,7 +41,7 @@ body {
   right: 0;
   top: 0;
   z-index: -1;
-  transition: all .3s;
+  transition: all .5s;
 }
 
 .icon svg{
@@ -51,7 +51,7 @@ body {
   left: calc(50% - 15px);
   transform: rotate(-45deg);
   fill: #2ecc71;
-  transition: all .3s;
+  transition: all .5s;
 }
 
 .link_wrapper:hover{
@@ -191,21 +191,30 @@ body {
   }
 }
 
-.circular-chart.orange .circle {
-  stroke: #ff9f00;
+.test {
+  position: absolute;
+  top: 76%;
+  right: 15%;
+  bottom: 20%;
+  left: 15%;
 }
 
-.circular-chart.green .circle {
-  stroke: #4CC790;
+#Progress {
+  background: rgba(255, 255, 255, 0.322);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+  height: 75%;
+  width: 100%;
 }
 
-.circular-chart.blue .circle {
-  stroke: #3c9ee5;
-}
-
-.percentage {
-  fill: #666;
-  font-family: sans-serif;
-  font-size: 0.5em;
-  text-anchor: middle;
+#progressBar {
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 100px;
+  background: rgb(0, 147, 245);
+  height: 24px;
+  width: 0;
 }

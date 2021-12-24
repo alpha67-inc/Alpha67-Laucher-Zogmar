@@ -1,0 +1,13 @@
+#Progress {
+    width: 100%;    
+    background-color: black;
+  }
+  
+  #progressBar {
+    width: 1%;
+    height: 40px;
+    background-color: orange;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+  }

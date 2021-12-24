@@ -6,6 +6,8 @@ import json
 import uuid
 import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 
+from cryptography.fernet import Fernet
+
 def getSelectVersion():
         user = os.getlogin()
         try:
@@ -69,7 +71,7 @@ def start(n):
 
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
-            # print(int(percent))
+            print(int(percent))
             #self.ui.download.setValue(percent)
 
         callback = {
@@ -143,16 +145,29 @@ def start(n):
                 uInfo = uInfo[0]
                 username = uInfo['username']
                 password = uInfo['password']
+                key = uInfo['key']
+            fernet = Fernet(key)
 
             passwordEnc = str(user + "67")
+            print(type(password))
             password = password.replace("'", '')
             password = password[1:]
+            print("info ###################################")
             print(password)
             username = username.replace("'", '')
             username = username[1:]
+            print(fernet)
             print(username)
-            pa = encrypte.password_decrypt(password, passwordEnc).decode()
-            us = encrypte.password_decrypt(username, passwordEnc).decode()
+            print("info #####################################")
+
+            username = str.encode(username)
+            password = str.encode(password)
+            
+
+            us = fernet.decrypt(username).decode()
+            pa = fernet.decrypt(password).decode()
+
+            print("the username decrypt is ", us)
 
             login_data = minecraft_launcher_lib.account.login_user(us, pa)
             print(login_data)
@@ -247,9 +262,11 @@ def start(n):
         print('start minecraft')
         max_value = [0]
 
+        @eel.expose
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
-            #print(int(percent))
+            print(int(percent))
+            return percent
             #self.ui.download.setValue(percent)
 
         callback = {
@@ -286,14 +303,17 @@ def start(n):
 
             else:
                 def checkVersionDoawnload():
-                    directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
-                    files = os.listdir(directory_mod)
-                    for f in files:
-                        print("file: "+f)
-                        if forgeLauch == f:
-                            print("version already download lauching minecraft")
-                            return True
-                            break
+                    try:
+                        directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
+                        files = os.listdir(directory_mod)
+                        for f in files:
+                            print("file: "+f)
+                            if forgeLauch == f:
+                                print("version already download lauching minecraft")
+                                return True
+                                break
+                    except:
+                        return None
 
                 if checkVersionDoawnload() == None:
                     try:
@@ -325,18 +345,31 @@ def start(n):
                 uInfo = uInfo[0]
                 username = uInfo['username']
                 password = uInfo['password']
+                key = uInfo['key']
+
+            fernet = Fernet(key)
 
             passwordEnc = str(user + "67")
+            print(type(password))
             password = password.replace("'", '')
             password = password[1:]
+            print("info ###################################")
             print(password)
             username = username.replace("'", '')
             username = username[1:]
+            print(fernet)
             print(username)
-            pa = encrypte.password_decrypt(password, passwordEnc).decode()
-            us = encrypte.password_decrypt(username, passwordEnc).decode()
+            print("info #####################################")
+
+            username = str.encode(username)
+            password = str.encode(password)
+            
+
+            us = fernet.decrypt(username).decode()
+            pa = fernet.decrypt(password).decode()
 
             login_data = minecraft_launcher_lib.account.login_user(us, pa)
+
             print(login_data)
             options = {
                 "username": login_data["selectedProfile"]["name"],
@@ -350,7 +383,7 @@ def start(n):
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
-            elif motor == "Forge":
+            elif motor == "forge":
                 print("crack, lauching minecraft, version:"+forgeLauch)
                 directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(

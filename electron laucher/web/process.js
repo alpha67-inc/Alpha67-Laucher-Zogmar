@@ -16,6 +16,10 @@ function js_random() {
 
 
 async function run() {
+  var elem = document.getElementById("progressBar");
+  var width = eel.updateBar()
+  elem.style.width = width + "%";
+  elem.innerHTML = width  + "%";
     //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
     eel.StartMinecraft()
 
@@ -28,6 +32,13 @@ async function connection() {
   window.localStorage.removeItem('invalid');
   window.location.href = "connection/connection.html";
 }
+
+eel.expose
+function updatePrgressBar(){
+  var elem = document.getElementById("progressBar");
+
+}
+
 
 
 eel.sendVersions()(function(settings){

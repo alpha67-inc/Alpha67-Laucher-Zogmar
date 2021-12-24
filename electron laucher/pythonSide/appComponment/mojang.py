@@ -65,7 +65,7 @@ def upass():
             x = {
 
                 "mojang": [
-                    {"username": str(encUserName), "password": str(encPassword), "loginUsername": loginUsername, "uuid": uuid,"token": token, "key": str(key)}
+                    {"username": str(encUserName), "password": str(encPassword), "loginUsername": loginUsername, "uuid": uuid,"token": token, "key": key.decode('utf-8')}
                 ],
                 "crack": [
                     {"username": crack()}
