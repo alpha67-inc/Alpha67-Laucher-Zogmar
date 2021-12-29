@@ -459,7 +459,7 @@ def minecraft(n):
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
                 execute_command(command)
-            elif motor == "Forge":
+            elif motor == "forge":
                 try:
                     print("crack, lauching minecraft, version:"+forgeLauch)
                     directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'

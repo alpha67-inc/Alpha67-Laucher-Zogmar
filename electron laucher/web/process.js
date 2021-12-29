@@ -37,7 +37,7 @@ async function getPercentValue()
 
   async function scene() {
     width = await eel.read()();
-    width = parseInt(width);
+    width = width.toFixed(1);
     console.log(width);
 
     if (width >= 1000) {
