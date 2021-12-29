@@ -1,3 +1,5 @@
+
+
 eel.expose(returnInfo);
 function returnInfo(){
     var select = document.getElementById('motor');
@@ -13,15 +15,45 @@ function js_random() {
   return Math.random();
 }
 
+async function start()
+{
+  await getPercentValue()
+  await run()
+}
+
+async function getPercentValue()
+{ 
+  var element = document.getElementById("progressBar");   
+  var width = 1;
+  var identity = setInterval(scene, 100);
+
+  async function scene() {
+    width = await eel.read()();
+    console.log(width);
+
+    if (width >= 1000) {
+      clearInterval(identity);
+    } else {
+      element.style.width = width + '%'; 
+      element.innerHTML = width + "%";
+    }
+  }
+
+
+  }
+
+
 
 
 async function run() {
-  var elem = document.getElementById("progressBar");
-  var width = eel.updateBar()
-  elem.style.width = width + "%";
-  elem.innerHTML = width  + "%";
+  //var elem = document.getElementById("progressBar");
+  //var width = eel.updateBar()
+  //elem.style.width = width + "%";
+  //elem.innerHTML = width  + "%";
     //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
-    eel.StartMinecraft()
+  eel.StartMinecraft();
+
+    
 
           /*(function(settings){
             var version = settings;

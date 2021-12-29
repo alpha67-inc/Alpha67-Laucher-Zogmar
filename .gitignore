@@ -1,7 +1,7 @@
 electron laucher/node_modules
 electron laucher/.vscode
 examples
-
+test
 
 .idea/inspectionProfiles/Project_Default.xml
 electron laucher/microsoftLogin.exe

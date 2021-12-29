@@ -85,3 +85,12 @@ def startCrackLogin():
 @eel.expose
 def StartMinecraft():
     lauch()
+
+@eel.expose
+def read():
+
+    f = open("percent.txt", "r")
+    value = f.read()
+    value = float(value)
+    print(value)
+    return value

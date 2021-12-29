@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+var fs = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -19,6 +20,7 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+  //mainWindow.webContents.openDevTools()
 
 
   var resizeTimeout;
@@ -62,6 +64,8 @@ app.on('activate', function () {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
 })
+
+
 
 
 

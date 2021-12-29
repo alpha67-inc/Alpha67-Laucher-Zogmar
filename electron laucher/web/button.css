@@ -214,7 +214,19 @@ body {
 #progressBar {
   box-shadow: 0 10px 40px -10px #fff;
   border-radius: 100px;
-  background: rgb(0, 147, 245);
-  height: 24px;
+  height: 70%;
   width: 0;
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  animation: glowing 20s infinite;
+}
+
+#dis {
+  align-items: center;
+  color: #ff0000;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 }

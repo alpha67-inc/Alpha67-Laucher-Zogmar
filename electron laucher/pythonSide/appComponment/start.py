@@ -7,6 +7,9 @@ import uuid
 import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 
 from cryptography.fernet import Fernet
+import time
+
+e=None
 
 def getSelectVersion():
         user = os.getlogin()
@@ -46,7 +49,14 @@ def execute_command(command):
         # Start Minecraft
         subprocess.call(command)
 
-def start(n):
+
+def ok(pr):
+    f = open("percent.txt", "w")
+    f.write(str(pr))
+    f.close()
+
+def minecraft(n):
+
     user = os.getlogin()
 
     def maximum(max_value, value):
@@ -72,7 +82,9 @@ def start(n):
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))
-            #self.ui.download.setValue(percent)
+            eel.get()()
+            eel.sleep(0.001)
+            return percent
 
         callback = {
             "setStatus": lambda text: print(text),
@@ -266,6 +278,8 @@ def start(n):
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))
+            ok(percent)
+            eel.sleep(0.001)
             return percent
             #self.ui.download.setValue(percent)
 
@@ -452,7 +466,18 @@ def start(n):
                     subprocess.call(minecraft_command)
                 except:
                     None
+    
+
+def start(n):
+    print(n)
+    f = open("demofile2.txt", "w")
+    f.write(str(n))
+    f.close()
+
+
+    
 
 
 def lauch():
-    eel.returnInfo()(lambda n: start(n))
+    eel.returnInfo()(lambda n: minecraft(n))
+
