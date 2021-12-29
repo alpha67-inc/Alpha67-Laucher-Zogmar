@@ -193,17 +193,30 @@ body {
 
 .test {
   position: absolute;
-  top: 76%;
+  top: 65%;
   right: 15%;
-  bottom: 20%;
+  bottom: 32%;
   left: 15%;
+  transition: 0.3s;
+  display: none;
+}
+
+.test:hover {
+  top: 64%;
+  bottom: 31%;
+  font-size: 20px;
+}
+
+#re {
+  color: #005ae2;
+  text-align: center;
+  
 }
 
 #Progress {
   background: rgba(255, 255, 255, 0.322);
   justify-content: flex-start;
   border-radius: 100px;
-  align-items: center;
   position: relative;
   padding: 0 5px;
   display: flex;
@@ -211,19 +224,19 @@ body {
   width: 100%;
 }
 
+
+
 #progressBar {
   box-shadow: 0 10px 40px -10px #fff;
   border-radius: 100px;
-  height: 70%;
-  width: 0;
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  height: 78%;
+  width: 100%;
+  background: linear-gradient(45deg, #610000, #642d00, #696800, #1b5e00, #005244, #00105e, #300063, #570044, #5f0000);
   animation: glowing 20s infinite;
+  transition: opacity .3s ease-in-out;
+  background-size: 400%;
 }
 
-#dis {
-  align-items: center;
-  color: #ff0000;
-}
 
 @keyframes glowing {
   0% { background-position: 0 0; }

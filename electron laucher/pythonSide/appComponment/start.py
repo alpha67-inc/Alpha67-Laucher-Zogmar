@@ -82,7 +82,7 @@ def minecraft(n):
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))
-            eel.get()()
+            ok(percent)
             eel.sleep(0.001)
             return percent
 
@@ -144,6 +144,8 @@ def minecraft(n):
 
         login = getSelectVersion()
         print(login)
+
+        ok("1000")
 
         ###########
         if login == "mojang":
@@ -275,7 +277,7 @@ def minecraft(n):
         max_value = [0]
 
         @eel.expose
-        def updateBar(value, maxValue):
+        def updateBarf(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))
             ok(percent)
@@ -285,7 +287,7 @@ def minecraft(n):
 
         callback = {
             "setStatus": lambda text: print(text),
-            "setProgress": lambda value: updateBar(value, max_value),
+            "setProgress": lambda value: updateBarf(value, max_value),
             "setMax": lambda value: maximum(max_value, value)
         }
 
@@ -345,6 +347,8 @@ def minecraft(n):
 
         login = getSelectVersion()
         print(login)
+
+        ok("1000")
 
 
         ###########

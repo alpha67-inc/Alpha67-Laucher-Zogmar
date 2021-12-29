@@ -10,6 +10,12 @@ function returnInfo(){
     return info;
 }
 
+function first ()
+{
+  var cont = document.getElementById("test");
+  x.style.display = "block";
+}
+
 eel.expose(js_random);
 function js_random() {
   return Math.random();
@@ -24,18 +30,27 @@ async function start()
 async function getPercentValue()
 { 
   var element = document.getElementById("progressBar");   
+  var text = document.getElementById("re"); 
+  var cont = document.getElementById("test"); 
   var width = 1;
   var identity = setInterval(scene, 100);
 
   async function scene() {
     width = await eel.read()();
+    width = parseInt(width);
     console.log(width);
 
     if (width >= 1000) {
       clearInterval(identity);
-    } else {
+      cont.style.display = "none";
+      //alert("finish")
+    } 
+
+    else {
+      cont.style.display = "block";
       element.style.width = width + '%'; 
-      element.innerHTML = width + "%";
+      text.innerHTML = width + "%";
+    
     }
   }
 

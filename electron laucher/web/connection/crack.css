@@ -10,7 +10,7 @@
 	 font-family: 'Source Sans Pro', sans-serif;
 	 color: white;
 	 font-weight: 300;
-   background: linear-gradient(-45deg, #38bcec, #23d5ab);
+	 background: linear-gradient(-45deg, #003b50, #004d3b);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
