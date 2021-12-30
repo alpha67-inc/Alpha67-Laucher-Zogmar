@@ -276,7 +276,7 @@ def minecraft(n):
         print('start minecraft')
         max_value = [0]
 
-        @eel.expose
+        #@eel.expose
         def updateBarf(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))

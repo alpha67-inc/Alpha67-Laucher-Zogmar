@@ -102,6 +102,7 @@ body {
 .versiong:hover {
   border-radius: 0px;
   top: 87%;
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 
 }
 
@@ -125,6 +126,7 @@ body {
 .motor:hover {
   border-radius: 0px;
   top: 87%;
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
 .btn-three {
