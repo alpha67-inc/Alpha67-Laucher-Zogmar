@@ -1,0 +1,106 @@
+Metadata-Version: 2.1
+Name: minecraft-launcher-lib
+Version: 4.2
+Summary: A library for creating a custom Minecraft launcher
+Home-page: https://gitlab.com/JakobDev/minecraft-launcher-lib
+Author: JakobDev
+Author-email: jakobdev@gmx.de
+License: BSD
+Project-URL: Issue tracker, https://gitlab.com/JakobDev/minecraft-launcher-lib/-/issues
+Project-URL: Documentation, https://minecraft-launcher-lib.readthedocs.io/en/latest/index.html
+Keywords: JakobDev,Minecraft,Mojang,launcher,minecraft-launcher,java
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Other Environment
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Games/Entertainment
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# minecraft-launcher-lib
+
+A Python library for creating a custom minecraft launcher. This library containts functions to install and execute minecraft and interacting with mojang accounts.
+
+```python
+import minecraft_launcher_lib
+import subprocess
+import sys
+
+# Set the data for your Azure Application here. For more information look at the documentation.
+CLIENT_ID = "YOUR CLIENT ID"
+SECRET = "YOUR SECRET"
+REDIRECT_URL = "YOUR REDIRECT URL"
+
+# Get latest version
+latest_version = minecraft_launcher_lib.utils.get_latest_version()["release"]
+
+# Get Minecraft directory
+minecraft_directory = minecraft_launcher_lib.utils.get_minecraft_directory()
+
+# Make sure, the latest version of Minecraft is installed
+minecraft_launcher_lib.install.install_minecraft_version(latest_version, minecraft_directory)
+
+# Login
+print(f"Please open {minecraft_launcher_lib.microsoft_account.get_login_url(CLIENT_ID, REDIRECT_URL)} in your browser and copy the url you are redirected into the prompt below.")
+code_url = input()
+
+# Check if the url contains a code
+if not minecraft_launcher_lib.microsoft_account.url_contains_auth_code(code_url):
+    print("The url is not valid")
+    sys.exit(1)
+
+# Get the code from the url
+auth_code = minecraft_launcher_lib.microsoft_account.get_auth_code_from_url(code_url)
+
+# Get the login data
+login_data = minecraft_launcher_lib.microsoft_account.complete_login(CLIENT_ID, SECRET, REDIRECT_URL, auth_code)
+
+# Get Minecraft command
+options = {
+    "username": login_data["name"],
+    "uuid": login_data["id"],
+    "token": login_data["access_token"]
+}
+minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(latest_version, minecraft_directory, options)
+
+# Start Minecraft
+subprocess.call(minecraft_command)
+```
+
+Features:
+- Easy installing
+- Get command to run Minecraft
+- Login to Microsoft account
+- Support Forge, Fabric and Liteloader
+- Old versions like alpha or beta supported
+- All functions have type annotations and docstrings
+- Only depents on [requests](https://pypi.org/project/requests)
+- Supports [PyPy](https://www.pypy.org)
+- Full Documention with tutorial online available
+- Examples available
+- OpenSource
+
+[View more examples](https://gitlab.com/JakobDev/minecraft-launcher-lib/-/tree/master/examples)
+
+[Read the documentation](https://minecraft-launcher-lib.readthedocs.io/en/latest/index.html)
+
+[Thanks to tomsik68 who documented how a minecraft launcher works](https://github.com/tomsik68/mclauncher-api/wiki)
+
+
