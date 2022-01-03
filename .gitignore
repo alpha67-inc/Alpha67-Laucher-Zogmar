@@ -1,4 +1,5 @@
 electron laucher/node_modules
+electron laucher/app/node_modules
 electron laucher/.vscode
 examples
 test
