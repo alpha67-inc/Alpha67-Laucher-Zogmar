@@ -12,13 +12,15 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
+    titleBarStyle: 'hidden',
     width: 1096,
     height: 720,
     'min-height': 1096,
     'min-width': 720,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    backgroundColor: '#171614'
   })
   //mainWindow.webContents.openDevTools()
 
@@ -45,6 +47,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
 }
 
 // This method will be called when Electron has finished
