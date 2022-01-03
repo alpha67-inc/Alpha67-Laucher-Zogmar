@@ -3,6 +3,7 @@ electron laucher/app/node_modules
 electron laucher/.vscode
 examples
 test
+.idea
 
 .idea/inspectionProfiles/Project_Default.xml
 electron laucher/microsoftLogin.exe
