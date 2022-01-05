@@ -25,6 +25,12 @@ async function start()
 {
   await getPercentValue()
   await run()
+  var cont = document.getElementById("loader"); 
+  var btn = document.getElementById("wrapper"); 
+  
+  cont.classList.toggle('show');
+  btn.classList.toggle('hide');
+
 }
 
 async function getPercentValue()
@@ -34,6 +40,8 @@ async function getPercentValue()
   var cont = document.getElementById("test"); 
   var width = 1;
   var identity = setInterval(scene, 100);
+  var load = document.getElementById("loader"); 
+  var btn = document.getElementById("wrapper"); 
 
   async function scene() {
     width = await eel.read()();
@@ -43,6 +51,9 @@ async function getPercentValue()
     if (width >= 1000) {
       clearInterval(identity);
       cont.style.display = "none";
+      
+      load.classList.toggle('hide');
+      btn.classList.toggle('show');
       //alert("finish")
     } 
 

@@ -1,2 +1,28 @@
-[31Dec2021 17:08:08.535] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--username, e, --version, 1.13.2-forge-25.0.223, --gameDir, C:/Users/vultorio\AppData\Roaming\.alpha67/minecraft/, --assetsDir, C:/Users/vultorio\AppData\Roaming\.alpha67/minecraft/assets, --assetIndex, 1.13.1, --uuid, e28a9f66bb0e405b9d70b7f475ad802e, --accessToken, ????????, --userType, mojang, --versionType, release, --launchTarget, fmlclient, --fml.forgeVersion, 25.0.223, --fml.mcVersion, 1.13.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20190213.203750]
-[31Dec2021 17:08:08.541] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher starting: java version 16.0.2 by BellSoft
+[20:29:35] [Render thread/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[20:29:36] [Render thread/ERROR]: Failed to verify authentication
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.checkPrivileges(YggdrasilSocialInteractionsService.java:112) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.<init>(YggdrasilSocialInteractionsService.java:42) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createSocialInteractionsService(YggdrasilAuthenticationService.java:151) ~[authlib-2.3.31.jar:?]
+	at dvo.a(SourceFile:672) [1.17.jar:?]
+	at dvo.<init>(SourceFile:431) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:179) [1.17.jar:?]
+Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:77) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:47) ~[authlib-2.3.31.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilSocialInteractionsService.checkPrivileges(YggdrasilSocialInteractionsService.java:104) ~[authlib-2.3.31.jar:?]
+	... 5 more
+[20:29:36] [Render thread/INFO]: Setting user: vultorio
+[20:29:36] [Render thread/INFO]: Backend library: LWJGL version 3.2.2 build 10
+[20:29:39] [Render thread/INFO]: Narrator library for x64 successfully loaded
+[20:29:39] [Render thread/INFO]: Reloading ResourceManager: Default
+[20:29:40] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
+[20:29:45] [Render thread/INFO]: Stopping!
+[20:29:45] [Render thread/ERROR]: Shutdown failure!
+java.util.ConcurrentModificationException: null
+	at java.util.HashMap.forEach(HashMap.java:1428) ~[?:?]
+	at exm.close(SourceFile:173) ~[1.17.jar:?]
+	at dvo.close(SourceFile:1040) [1.17.jar:?]
+	at dvo.l(SourceFile:1019) [1.17.jar:?]
+	at net.minecraft.client.main.Main.main(SourceFile:233) [1.17.jar:?]

@@ -47,7 +47,15 @@ def execute_command(command):
         # Connect the function to display the output
         #self.process.readyRead.connect(self.dataReady)
         # Start Minecraft
-        subprocess.call(command)
+        subprocess.call(command, stdout=subprocess.PIPE)
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                print(output.strip()) 
+        rc = process.poll()
+        return rc
 
 
 def ok(pr):
@@ -202,7 +210,7 @@ def minecraft(n):
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
-                subprocess.call(minecraft_command)
+                execute_command(minecraft_command)
 
         #################################################################################################
         if login == "microsoft":
@@ -228,7 +236,7 @@ def minecraft(n):
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
-                subprocess.call(minecraft_command)
+                execute_command(minecraft_command)
 
         #########################################################################################################
         if login == "crack":
@@ -261,7 +269,7 @@ def minecraft(n):
                         forgeLauch, directory, options)
                     print(minecraft_command)
 
-                    subprocess.call(minecraft_command)
+                    execute_command(minecraft_command)
                 except:
                     None
 
@@ -407,7 +415,7 @@ def minecraft(n):
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
-                subprocess.call(minecraft_command)
+                execute_command(minecraft_command)
 
 
         #################################################################################################
@@ -434,7 +442,7 @@ def minecraft(n):
                 minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
                     forgeLauch, directory, options)
 
-                subprocess.call(minecraft_command)
+                execute_command(minecraft_command)
 
         #########################################################################################################
         if login == "crack":
@@ -458,6 +466,7 @@ def minecraft(n):
                 minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
                 command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
                                                                                 options)
+                print(command)
                 execute_command(command)
             elif motor == "forge":
                 try:
@@ -467,7 +476,7 @@ def minecraft(n):
                         forgeLauch, directory, options)
                     print(minecraft_command)
 
-                    subprocess.call(minecraft_command)
+                    execute_command(minecraft_command)
                 except:
                     None
     

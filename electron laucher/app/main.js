@@ -12,7 +12,7 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
-    titleBarStyle: 'hidden',
+    //titleBarStyle: 'hidden',
     width: 1096,
     height: 720,
     'min-height': 1096,
