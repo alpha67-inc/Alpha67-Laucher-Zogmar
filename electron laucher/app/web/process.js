@@ -42,15 +42,39 @@ async function getPercentValue()
   var identity = setInterval(scene, 100);
   var load = document.getElementById("loader"); 
   var btn = document.getElementById("wrapper"); 
+  var count = 0;
 
   async function scene() {
     width = await eel.read()();
     width = width.toFixed(1);
     console.log(width);
 
-    if (width >= 1000) {
+
+    try {
+
+      if (before == width) {
+        count = count+1;
+        console.log(count)
+      }
+      
+      else {
+        count = 0;
+      }
+
+    } 
+    
+    catch (error) {
+      console.error(error);
+    }
+
+
+
+    if (width >= 1000 || count == 1000) {
       clearInterval(identity);
       cont.style.display = "none";
+      load.classList.toggle('hide');
+      btn.classList.toggle('show');
+
       load.classList.toggle('hide');
       btn.classList.toggle('show');
       //alert("finish")
@@ -60,6 +84,8 @@ async function getPercentValue()
       cont.style.display = "block";
       element.style.width = width + '%'; 
       text.innerHTML = width + "%";
+
+      var before = width;
     
     }
   }

@@ -20,9 +20,10 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true
     },
-    backgroundColor: '#171614'
+    backgroundColor: '#171614',
+    icon: __dirname + '/icon.ico',
   })
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
 
   var resizeTimeout;
