@@ -1,6 +1,3 @@
-# Alpha67-Laucher-Electron
-
-# alpha67-laucher
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -10,12 +7,12 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<!--<div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Alpha67-Laucher-Electron</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
