@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
-    <img src="image/test.jpeg" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="80" height="80">
   </a> 
 
   <h3 align="center">Alpha67-Laucher-Electron</h3>
