@@ -46,7 +46,7 @@
 ## About The Laucher
 
   <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
-    <img src="img/main.png" alt="Logo" width="1400" height="800">
+    <img src="img/main.png" alt="Logo" width="1400" height="600">
   </a> 
 
 This Laucher name Alpha Laucher is develop for minecraft server call alpha67 server, can be use for an normal use of minecraft with all vanilla version and forge.
@@ -57,7 +57,7 @@ Why you should use it:
 * You can connect with premium version ( microsoft or mojang account ) and with a crack version
 
   <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
-    <img src="img/log.png" alt="Logo" width="1400" height="800">
+    <img src="img/log.png" alt="Logo" width="1400" height="600">
   </a> 
 
 Of course, is regulary updated to correct bug and add new features.
