@@ -11,12 +11,16 @@ body {
   top: 90%;
   left: 85%;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s linear;
+  transition: opacity 0.5s linear;
 
 }
 
 .wrapper.hide {
   opacity: 0;
+}
+
+.wrapper.show {
+  opacity: 1;
 }
 
 .link_wrapper{

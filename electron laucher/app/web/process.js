@@ -51,7 +51,6 @@ async function getPercentValue()
     if (width >= 1000) {
       clearInterval(identity);
       cont.style.display = "none";
-      
       load.classList.toggle('hide');
       btn.classList.toggle('show');
       //alert("finish")
