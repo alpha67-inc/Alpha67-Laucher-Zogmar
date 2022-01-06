@@ -56,6 +56,10 @@ Why you should use it:
 * If you juste want to playe minecraft, this laucher offers a smooth and pretty interface
 * You can connect with premium version ( microsoft or mojang account ) and with a crack version
 
+  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
+    <img src="img/log.png" alt="Logo" width="1400" height="800">
+  </a> 
+
 Of course, is regulary updated to correct bug and add new features.
 
 Use the `BLANK_README.md` to get started.
