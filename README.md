@@ -46,7 +46,7 @@
 ## About The Laucher
 
   <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
-    <img src="img/logo.png" alt="Logo" width="200" height="200">
+    <img src="img/main.png" alt="Logo" width="1352" height="887">
   </a> 
 
 This Laucher name Alpha Laucher is develop for minecraft server call alpha67 server, can be use for an normal use of minecraft with all vanilla version and forge.
