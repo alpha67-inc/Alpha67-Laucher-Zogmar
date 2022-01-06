@@ -12,7 +12,7 @@
     <img src="img/logo.png" alt="Logo" width="200" height="200">
   </a> 
 
-  <h3 align="center">Alpha67-Laucher-Electron</h3>
+  <h3 align="center">Alpha67-Laucher-Zogmar</h3>
 
   <p align="center">
     An awesome minecraft Laucher build for alpha67 server
@@ -45,7 +45,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Laucher
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
+    <img src="img/main.png" alt="Logo" width="1400" height="600">
+  </a> 
 
 This Laucher name Alpha Laucher is develop for minecraft server call alpha67 server, can be use for an normal use of minecraft with all vanilla version and forge.
 
@@ -53,6 +55,10 @@ Why you should use it:
 * If you are player of the alpha67 server, it will automatically update the ModPack and ther version.
 * If you juste want to playe minecraft, this laucher offers a smooth and pretty interface
 * You can connect with premium version ( microsoft or mojang account ) and with a crack version
+
+  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
+    <img src="img/log.png" alt="Logo" width="1400" height="600">
+  </a> 
 
 Of course, is regulary updated to correct bug and add new features.
 
