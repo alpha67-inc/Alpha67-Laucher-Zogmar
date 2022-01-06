@@ -47,18 +47,18 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Laucher
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This Laucher name Alpha Laucher is develop for minecraft server call alpha67 server, can be use for an normal use of minecraft with all vanilla version and forge.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Why you should use it:
+* If you are player of the alpha67 server, it will automatically update the ModPack and ther version.
+* If you juste want to playe minecraft, this laucher offers a smooth and pretty interface
+* You can connect with premium version ( microsoft or mojang account ) and with a crack version
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Of course, is regulary updated to correct bug and add new features.
 
 Use the `BLANK_README.md` to get started.
 
@@ -68,7 +68,7 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This laucher to run use : 
 
 * [Python](https://www.python.org/)
 * [Eel](https://github.com/ChrisKnott/Eel)
@@ -82,16 +82,27 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+If you want to help of the developpement of this project you need to have some bases on python and web technologie like html, css, javascript.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+For this project you will need:
+
+* [Python](https://www.python.org/)
+* [nodes.js](https://nodejs.org/en/)
+* Eel 
   ```sh
-  npm install npm@latest -g
+  python -m pip install eel
   ```
+* Minecraft Laucher Lib
+  ```sh
+  python -m pip install minecraft-launcher-lib
+  ```
+ * Elelectron
+  ```sh
+  npm i electron -g
+  ```
+
 
 ### Installation
 
