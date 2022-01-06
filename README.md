@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <!--<div align="center">
-  <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fbeautiful%2520view%2F&psig=AOvVaw1VcjgDZoB53oFJ7l-RjyrT&ust=1641563397939000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPDT7rihnfUCFQAAAAAdAAAAABAD">
+  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/blob/main/image/test.jpg?raw=true">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
