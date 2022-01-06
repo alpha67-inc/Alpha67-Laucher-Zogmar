@@ -12,7 +12,7 @@
     <img src="img/logo.png" alt="Logo" width="200" height="200">
   </a> 
 
-  <h3 align="center">Alpha67-Laucher-Electron</h3>
+  <h3 align="center">Alpha67-Laucher-Zogmar</h3>
 
   <p align="center">
     An awesome minecraft Laucher build for alpha67 server
