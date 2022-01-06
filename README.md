@@ -7,10 +7,10 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<!--<div align="center">
-  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/blob/main/image/test.jpg?raw=true">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
+<div align="center">
+  <a href="https://github.com/alpha67-inc/Alpha67-Laucher-Electron/">
+    <img src="img/test.jpeg" alt="Logo" width="80" height="80">
+  </a> 
 
   <h3 align="center">Alpha67-Laucher-Electron</h3>
 
