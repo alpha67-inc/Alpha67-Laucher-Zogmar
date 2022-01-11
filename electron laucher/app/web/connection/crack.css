@@ -7,13 +7,10 @@
 	 font-weight: 300;
 }
  body {
-	 font-family: 'Source Sans Pro', sans-serif;
-	 color: white;
-	 font-weight: 300;
-	 background: linear-gradient(-45deg, #003b50, #004d3b);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+	background-image: url('../img/login.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
 
 }
 
