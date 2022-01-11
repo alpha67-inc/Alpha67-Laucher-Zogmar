@@ -11,6 +11,7 @@ import time
 
 e=None
 
+@eel.expose
 def getSelectVersion():
         user = os.getlogin()
         try:
@@ -28,9 +29,15 @@ def getSelectVersion():
                 return "mojang"
             else:
                 print("please connects")
+                eel.noc()
+                return None
+                
 
         except:
             print("please connect")
+            eel.noc()
+            return None
+            
 
 
 def execute_command(command):
@@ -73,8 +80,11 @@ def minecraft(n):
     version = n[1]
     motor = n[0]
     print("motor is : ", motor)
+    login = getSelectVersion()
+    print("the login methode is lllllllllllllllllll: ",login)
+    print(login)
 
-    if version == "alpha67":
+    if version == "alpha67" and login != None:
         directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
         print('start alpha laucher to connect to the server')
         user = os.getlogin()
@@ -151,8 +161,7 @@ def minecraft(n):
         #self.ui.download.hide()
 
         login = getSelectVersion()
-        print(login)
-
+        print("the login methode is : ",login)
         ok("1000")
 
         ###########
@@ -273,7 +282,8 @@ def minecraft(n):
                 except:
                     None
 
-    else:
+    elif(login != None):
+
         version = n[1]
         
         motor = n[0]
@@ -352,9 +362,6 @@ def minecraft(n):
 
         #self.ui.play.show()
         #self.ui.download.hide()
-
-        login = getSelectVersion()
-        print(login)
 
         ok("1000")
 

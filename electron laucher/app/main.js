@@ -1,12 +1,19 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-var fs = require('fs');
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 function test() {
   alert('Hello World')   // The function returns the product of p1 and p2
 }
+
+const {
+  app,
+  BrowserWindow,
+  ipcMain
+} = require("electron");
+const path = require("path");
+const fs = require("fs");
 
 function createWindow () {
   // Create the browser window.
@@ -18,7 +25,8 @@ function createWindow () {
     'min-height': 1096,
     'min-width': 720,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
     },
     backgroundColor: '#171614',
     icon: __dirname + '/icon.ico',

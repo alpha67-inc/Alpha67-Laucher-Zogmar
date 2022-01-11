@@ -1,4 +1,4 @@
-
+//var fs = require('electron').remote.require('fs');
 
 eel.expose(returnInfo);
 function returnInfo(){
@@ -23,13 +23,20 @@ function js_random() {
 
 async function start()
 {
-  await getPercentValue()
-  await run()
-  var cont = document.getElementById("loader"); 
-  var btn = document.getElementById("wrapper"); 
-  
-  cont.classList.toggle('show');
-  btn.classList.toggle('hide');
+  var login = await eel.getSelectVersion()();
+  console.log(login);
+
+  if (login != null)
+  {
+    await getPercentValue()
+    await run()
+    var cont = document.getElementById("loader"); 
+    var btn = document.getElementById("wrapper"); 
+    
+    cont.classList.toggle('show');
+    btn.classList.toggle('hide');
+  }
+
 
 }
 
@@ -139,3 +146,9 @@ eel.sendVersions()(function(settings){
         select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
     }
       });
+
+eel.expose(noc);
+function noc()
+{
+  alert("veuillez vous connecter, avant de lancer le jeu !");
+}
