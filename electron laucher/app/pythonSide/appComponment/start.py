@@ -8,6 +8,7 @@ import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 
 from cryptography.fernet import Fernet
 import time
+import threading
 
 e=None
 
@@ -493,9 +494,6 @@ def start(n):
     f = open("demofile2.txt", "w")
     f.write(str(n))
     f.close()
-
-
-    
 
 
 def lauch():

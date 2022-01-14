@@ -105,7 +105,7 @@ async function getPercentValue()
 
       load.classList.toggle('hide');
       btn.classList.toggle('show');
-      //alert("finish")
+      alert("finish")
     } 
 
     else {
