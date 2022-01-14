@@ -1,8 +1,25 @@
-body {
-  background-image: url('img/test.jpg');
+.bod {
+  background: url('img/test.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  transition: all 0.3s linear;
+}
+
+.bod.settings {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('img/test.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.main {
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
+.main.hides {
+  opacity: 0;
 }
 
 .wrapper{
@@ -17,9 +34,11 @@ body {
 
 .wrapper.hide {
   opacity: 0;
+  display: none;
 }
 
 .wrapper.show {
+  display: block;
   opacity: 1;
 }
 
@@ -333,6 +352,51 @@ body {
   border-top: 4px solid #EFEFFA;
 }
 
+.sett {
+  width: 70px;
+  position: fixed;
+  top: 5%;
+  left: 85%;
+
+}
+
+.sett:hover {
+  animation:spin 3s;
+}
+
+.sett:active {
+  animation:spina 0.3s;
+}
+
+
+
+@keyframes spin { 
+  0% {
+    transform:rotate(0deg); 
+  }
+  25% { 
+      transform:rotate(100deg); 
+  } 
+  75% {
+    transform:rotate(-100deg); 
+  }
+  100% {
+    transform:rotate(0deg); 
+  }
+}
+
+@keyframes spina { 
+  0% {
+    width: 70px;
+  }
+  100% { 
+      width: 50px;
+  }
+
+}
+
+
+
 @keyframes rotate-one {
   0% {
     transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
@@ -377,4 +441,5 @@ body {
     top: 84%;
   }
 }
+
 

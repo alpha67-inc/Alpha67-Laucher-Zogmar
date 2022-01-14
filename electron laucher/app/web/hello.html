@@ -11,57 +11,62 @@
     </head>
     
 
-    <body onload="first()">
+    <body onload="first()" class="bod" id="bod">
+
+      <div id="main" class="main" style="display: block;">
+          <div class="test" id="test">
+          <h2 id="re">0%</h2>
+          <div id="Progress">
+            <div id="progressBar"></div>
+          </div>
+        </div>
 
 
-      <div class="test" id="test">
-      <h2 id="re">0%</h2>
-      <div id="Progress">
-        <div id="progressBar"></div>
+        <div class="wrapper" id="wrapper" onclick="start()">
+      <div class="link_wrapper">
+          <a id="myLink">PLAY</a>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+            <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hover #3 -->
+    <div class="box-3" onClick="connection()">
+      <div class="btn btn-three">
+        <span id='phrase3'>connection</span>
       </div>
     </div>
 
+    <img src="img/sett.png" class="sett" onclick="sett()">
 
-    <div class="wrapper" id="wrapper" onclick="start()">
-  <div class="link_wrapper">
-      <a id="myLink">PLAY</a>
-    <div class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
-        <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
-      </svg>
+
+    <select name="versiong" class="versiong" id="versiong">
+      <option>Choose a number</option>
+    </select>
+
+    <select name="motor" class="motor" id="motor">
+      <option value="vanilla">Vanilla</option>
+      <option value="forge">Forge</option>
+    </select>
+
+
+
+    <h1 class="progr"></h1>
+
+
+    <div class="loader" id="loader">
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
     </div>
-  </div>
 
 </div>
 
-<!-- Hover #3 -->
-<div class="box-3" onClick="connection()">
-  <div class="btn btn-three">
-    <span id='phrase3'>connection</span>
-  </div>
-</div>
 
-
-<select name="versiong" class="versiong" id="versiong">
-  <option>Choose a number</option>
-</select>
-
-<select name="motor" class="motor" id="motor">
-  <option value="vanilla">Vanilla</option>
-  <option value="forge">Forge</option>
-</select>
-
-
-
-<h1 class="progr"></h1>
-
-
-<div class="loader" id="loader">
-  <div class="inner one"></div>
-  <div class="inner two"></div>
-  <div class="inner three"></div>
-</div>
-<div id="sett"><%- include('welcome') %></div>
 
 
     </body>

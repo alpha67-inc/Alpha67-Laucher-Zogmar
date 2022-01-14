@@ -23,6 +23,8 @@ function js_random() {
 
 async function start()
 {
+//alert("start");
+
   var login = await eel.getSelectVersion()();
   console.log(login);
 
@@ -30,12 +32,30 @@ async function start()
   {
     await getPercentValue()
     await run()
+
     var cont = document.getElementById("loader"); 
     var btn = document.getElementById("wrapper"); 
     
     cont.classList.toggle('show');
-    btn.classList.toggle('hide');
+    btn.classList.toggle('hide').disabled = true;
+
+    
   }
+
+
+}
+
+
+async function sett()
+{
+
+    var consst = document.getElementById("main"); 
+    var bod = document.getElementById("bod"); 
+    
+    consst.classList.toggle('hides');
+    bod.classList.toggle('settings');
+
+
 
 
 }
@@ -66,6 +86,7 @@ async function getPercentValue()
       
       else {
         count = 0;
+        console.log(count);
       }
 
     } 
@@ -76,7 +97,7 @@ async function getPercentValue()
 
 
 
-    if (width >= 1000 || count == 1000) {
+    if (width >= 100 || count == 100) {
       clearInterval(identity);
       cont.style.display = "none";
       load.classList.toggle('hide');
