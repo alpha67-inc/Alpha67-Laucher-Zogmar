@@ -34,11 +34,11 @@
 
 .wrapper.hide {
   opacity: 0;
-  display: none;
+
 }
 
 .wrapper.show {
-  display: block;
+
   opacity: 1;
 }
 

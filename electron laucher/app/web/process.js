@@ -10,12 +10,6 @@ function returnInfo(){
     return info;
 }
 
-function first ()
-{
-  var cont = document.getElementById("test");
-  x.style.display = "block";
-}
-
 eel.expose(js_random);
 function js_random() {
   return Math.random();
@@ -97,7 +91,7 @@ async function getPercentValue()
 
 
 
-    if (width >= 100 || count == 100) {
+    if (width >= 98 || count == 100) {
       clearInterval(identity);
       cont.style.display = "none";
       load.classList.toggle('hide');
@@ -105,7 +99,7 @@ async function getPercentValue()
 
       load.classList.toggle('hide');
       btn.classList.toggle('show');
-      alert("finish")
+      //alert("finish")
     } 
 
     else {

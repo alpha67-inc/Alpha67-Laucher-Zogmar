@@ -55,15 +55,19 @@ def execute_command(command):
         # Connect the function to display the output
         #self.process.readyRead.connect(self.dataReady)
         # Start Minecraft
-        subprocess.call(command, stdout=subprocess.PIPE)
-        while True:
-            output = process.stdout.readline()
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                print(output.strip()) 
-        rc = process.poll()
-        return rc
+        th7 = threading.Thread(target=threadS(command=command))
+        th7.start()
+
+def threadS (command):
+    subprocess.call(command, stdout=subprocess.PIPE)
+    while True:
+        output = process.stdout.readline()
+        if output == '' and process.poll() is not None:
+            break
+        if output:
+            print(output.strip()) 
+    rc = process.poll()
+    return rc
 
 
 def ok(pr):
