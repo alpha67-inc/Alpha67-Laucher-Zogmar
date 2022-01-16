@@ -251,7 +251,16 @@
   bottom: 32%;
   left: 15%;
   transition: 0.3s;
-  display: none;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+
+.test.show {
+  opacity: 1;
+}
+
+.test.hide {
+  opacity: 0;
 }
 
 .test:hover {

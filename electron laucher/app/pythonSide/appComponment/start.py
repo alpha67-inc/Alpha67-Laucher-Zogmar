@@ -1,5 +1,7 @@
 import os
+from sys import stdout
 import minecraft_launcher_lib
+from subprocess import *
 import subprocess
 import eel
 import json
@@ -42,32 +44,13 @@ def getSelectVersion():
 
 
 def execute_command(command):
-        # QProcess.start takes as first argument the program and as second the list of arguments
-        # So we need the filter the program from the command
-        #arguments = command[1:]
-        # Deactivate the launch button
-        #self.launch_button.setEnabled(False)
-        # Clear the text  field
-        #self.setPlainText("")
-        ###process = QProcess(self)
-        # Activate the launch button when Minecraft is closed
-        #self.process.finished.connect(lambda: self.play.setEnabled(True))
-        # Connect the function to display the output
-        #self.process.readyRead.connect(self.dataReady)
-        # Start Minecraft
-        th7 = threading.Thread(target=threadS(command=command))
-        th7.start()
-
-def threadS (command):
     subprocess.call(command, stdout=subprocess.PIPE)
-    while True:
-        output = process.stdout.readline()
-        if output == '' and process.poll() is not None:
-            break
-        if output:
-            print(output.strip()) 
-    rc = process.poll()
-    return rc
+
+def ret(n):
+    print(n)
+
+def test():
+    eel.returnInfo()(lambda n: ret(n))
 
 
 def ok(pr):
@@ -76,6 +59,7 @@ def ok(pr):
     f.close()
 
 def minecraft(n):
+
 
     user = os.getlogin()
 
@@ -105,7 +89,8 @@ def minecraft(n):
         def updateBar(value, maxValue):
             percent = 100 * int(value) / int(maxValue[0])
             print(int(percent))
-            ok(percent)
+            if percent <= 95:
+                ok(percent)
             eel.sleep(0.001)
             return percent
 
@@ -132,6 +117,10 @@ def minecraft(n):
         # if you lauche minecraft vanilla
         if motor == "vanilla":
             minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+            print("game lauch")
+            eel.gameLauch()()
+            a = 100
+            ok(a)
 
         # if you lauche ;inecrqft forge
         if motor == "Forge":
@@ -158,6 +147,8 @@ def minecraft(n):
                         minecraft_launcher_lib.forge.install_forge_version(forge_version, directory,
                                                                             callback=callback)
                         print(forgeLauch)
+                        a = 100
+                        ok(a)
 
                     except:
                         None
@@ -334,6 +325,9 @@ def minecraft(n):
             print("dowload of minecraft vanilla : ",version)
             directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
             minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+            a = 128
+            print(a)
+            ok(a)
 
         #if you lauche ;inecrqft forge
         if motor == "forge":
@@ -361,14 +355,14 @@ def minecraft(n):
                         minecraft_launcher_lib.forge.install_forge_version(forge_version, directory,
                                                                             callback=callback)
                         print(forgeLauch)
+                        a = 100
+                        ok(a)
 
                     except:
                         None
 
         #self.ui.play.show()
         #self.ui.download.hide()
-
-        ok("1000")
 
 
         ###########

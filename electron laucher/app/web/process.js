@@ -27,9 +27,11 @@ async function start()
     await getPercentValue()
     await run()
 
-    var cont = document.getElementById("loader"); 
+    var an = document.getElementById("loader"); 
     var btn = document.getElementById("wrapper"); 
+    var cont = document.getElementById("test"); 
     
+    an.classList.toggle('show');
     cont.classList.toggle('show');
     btn.classList.toggle('hide').disabled = true;
 
@@ -49,8 +51,23 @@ async function sett()
     consst.classList.toggle('hides');
     bod.classList.toggle('settings');
 
+eel.expose(gameLauch);
+function gameLauch()
+{
+  //alert("ok");
+  var element = document.getElementById("progressBar");   
+  var text = document.getElementById("re"); 
+  var cont = document.getElementById("test"); 
+  var width = 1;
+  var identity = setInterval(scene, 100);
+  var load = document.getElementById("loader"); 
+  var btn = document.getElementById("wrapper"); 
 
+  an.classList.toggle('hide');
+  cont.classList.toggle('hide');
+  btn.classList.toggle('show').disabled = false;
 
+}
 
 }
 
@@ -91,14 +108,12 @@ async function getPercentValue()
 
 
 
-    if (width >= 98 || count == 100) {
+    if (width >= 128 || count == 100) {
       clearInterval(identity);
-      cont.style.display = "none";
+      //alert("stop")
       load.classList.toggle('hide');
-      btn.classList.toggle('show');
-
-      load.classList.toggle('hide');
-      btn.classList.toggle('show');
+      cont.classList.toggle('hide');
+      btn.classList.toggle('show').disabled = false;
       //alert("finish")
     } 
 
