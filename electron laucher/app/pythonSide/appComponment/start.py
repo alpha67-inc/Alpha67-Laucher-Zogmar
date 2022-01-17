@@ -11,6 +11,7 @@ import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 from cryptography.fernet import Fernet
 import time
 import threading
+from threading import *
 
 e=None
 
@@ -41,10 +42,21 @@ def getSelectVersion():
             eel.noc()
             return None
             
-
+def mino(command):
+    subprocess.call(command, stdout=subprocess.PIPE)
+def ree():
+    for i in range(50):
+        print("test")
+        time.sleep(0.5)
 
 def execute_command(command):
-    subprocess.call(command, stdout=subprocess.PIPE)
+    print("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    x = threading.Thread(target=mino, args=(command,))
+    threads.append(x)
+    x.start()
+    y = threading.Thread(target=ree)
+    threads.append(y)
+    y.start()
 
 def ret(n):
     print(n)

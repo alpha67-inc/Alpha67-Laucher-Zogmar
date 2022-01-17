@@ -56,16 +56,6 @@ function gameLauch()
 {
   //alert("ok");
   var element = document.getElementById("progressBar");   
-  var text = document.getElementById("re"); 
-  var cont = document.getElementById("test"); 
-  var width = 1;
-  var identity = setInterval(scene, 100);
-  var load = document.getElementById("loader"); 
-  var btn = document.getElementById("wrapper"); 
-
-  an.classList.toggle('hide');
-  cont.classList.toggle('hide');
-  btn.classList.toggle('show').disabled = false;
 
 }
 
@@ -85,30 +75,8 @@ async function getPercentValue()
   async function scene() {
     width = await eel.read()();
     width = width.toFixed(1);
-    console.log(width);
 
-
-    try {
-
-      if (before == width) {
-        count = count+1;
-        console.log(count)
-      }
-      
-      else {
-        count = 0;
-        console.log(count);
-      }
-
-    } 
-    
-    catch (error) {
-      console.error(error);
-    }
-
-
-
-    if (width >= 128 || count == 100) {
+    if (width >= 128) {
       clearInterval(identity);
       //alert("stop")
       load.classList.toggle('hide');
@@ -122,7 +90,6 @@ async function getPercentValue()
       element.style.width = width + '%'; 
       text.innerHTML = width + "%";
 
-      var before = width;
     
     }
   }
