@@ -1,3 +1,4 @@
+from asyncio import threads
 import os
 from sys import stdout
 import minecraft_launcher_lib
@@ -12,6 +13,7 @@ from cryptography.fernet import Fernet
 import time
 import threading
 from threading import *
+
 
 e=None
 
@@ -43,20 +45,16 @@ def getSelectVersion():
             return None
             
 def mino(command):
-    subprocess.call(command, stdout=subprocess.PIPE)
+    None
+    #subprocess.call(command, stdout=subprocess.PIPE)
 def ree():
     for i in range(50):
         print("test")
         time.sleep(0.5)
 
 def execute_command(command):
-    print("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
-    x = threading.Thread(target=mino, args=(command,))
-    threads.append(x)
-    x.start()
-    y = threading.Thread(target=ree)
-    threads.append(y)
-    y.start()
+    print(command)
+    eel.spawn(mino(command))
 
 def ret(n):
     print(n)
@@ -336,7 +334,7 @@ def minecraft(n):
         if motor == "vanilla":
             print("dowload of minecraft vanilla : ",version)
             directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-            minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+            #minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
             a = 128
             print(a)
             ok(a)
@@ -482,8 +480,7 @@ def minecraft(n):
             print(motor)
             if motor == "vanilla":
                 minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
-                                                                                options)
+                command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory, options)
                 print(command)
                 execute_command(command)
             elif motor == "forge":

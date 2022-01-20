@@ -45,6 +45,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL('http://localhost:8000/hello.html');
+  //mainWindow.loadURL('https://192.168.1.60/#/Dashboard');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
