@@ -1,4 +1,3 @@
-from asyncio import threads
 import os
 from sys import stdout
 import minecraft_launcher_lib
@@ -45,8 +44,9 @@ def getSelectVersion():
             return None
             
 def mino(command):
-    None
-    #subprocess.call(command, stdout=subprocess.PIPE)
+    subprocess.call(command, stdout=subprocess.PIPE)
+
+    
 def ree():
     for i in range(50):
         print("test")
@@ -80,8 +80,7 @@ def minecraft(n):
     motor = n[0]
     print("motor is : ", motor)
     login = getSelectVersion()
-    print("the login methode is lllllllllllllllllll: ",login)
-    print(login)
+    print("the login methode is : ",login)
 
     if version == "alpha67" and login != None:
         directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
@@ -115,6 +114,9 @@ def minecraft(n):
         print(motor)
         mpDownloader.down()
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
+
+
+
         print(forge_version)
 
         try:
@@ -127,6 +129,7 @@ def minecraft(n):
         # if you lauche minecraft vanilla
         if motor == "vanilla":
             minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+
             print("game lauch")
             eel.gameLauch()()
             a = 100
@@ -318,9 +321,7 @@ def minecraft(n):
 
         #self.ui.download.show()
         #self.ui.play.hide()
-        print(motor)
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
-        print(forge_version)
 
         try:
             forgeLauch = forge_version.replace("-", "-forge-")
@@ -334,9 +335,55 @@ def minecraft(n):
         if motor == "vanilla":
             print("dowload of minecraft vanilla : ",version)
             directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-            #minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+
+            def checkVersionDoawnload():
+                try:
+                    directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
+                    files = os.listdir(directory_mod)
+                    for f in files:
+                        print("file: "+f)
+                        if version == f:
+                            print("version already download lauching minecraft")
+                            return True
+                            break
+                except:
+                    print("cannot install version:", version)
+                    return None
+
+            if checkVersionDoawnload() == None:
+                try:
+                    print("doawnloading:",version)
+                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+
+                    print("update version json file")
+
+                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'r') as file:
+                        data = json.load(file)
+
+                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
+                        x = {"version": version}
+                        data.update(x)
+
+                        print(data)
+
+                        json.dump(data, file)
+
+                    #return uInfo
+
+                    a = 100
+                    ok(a)
+
+                except Exception as e: 
+                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
+                        print("update firste line version json.")
+                        x = {"version": version}
+                        json.dump(x, file)
+                    print(repr(e))
+
+
+            
             a = 128
-            print(a)
             ok(a)
 
         #if you lauche ;inecrqft forge
@@ -356,6 +403,7 @@ def minecraft(n):
                                 return True
                                 break
                     except:
+                        print("version note found starting his installation.")
                         return None
 
                 if checkVersionDoawnload() == None:
