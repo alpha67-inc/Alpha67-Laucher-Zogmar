@@ -1,0 +1,169 @@
+body {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('img/test.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+.settingsTabHeaderText{
+    font-size: 30px;
+    font-family: 'Avenir Medium';
+}
+.settingsTabHeaderDesc{
+    font-size: 20px;
+    font-family: 'Avenir Medium';
+}
+
+#settingsGameResolutionContainer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+    width: 75%;
+}
+#settingsGameResolutionContent {
+    display: flex;
+    align-items: center;
+    padding-top: 10%;
+}
+#settingsGameResolutionCross {
+    color: grey;
+    padding: 0px 10%;
+}
+#settingsGameWidth,
+#settingsGameHeight {
+    padding: 7.5px 5px;
+    width: 75px;
+}
+
+
+
+
+#settingsMemoryContainer {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+    margin-bottom: 20px;
+}
+
+/* Memory management title. */
+#settingsMemoryTitle {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Memory management content. */
+#settingsMemoryContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#settingsMemoryContentLeft {
+    width: 69%;
+}
+#settingsMemoryContentRight {
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+}
+
+/* Header for memory sliders. */
+.settingsMemoryHeader {
+    font-size: 14px;
+}
+
+/* Wrapper container for a memory slider and label. */
+.settingsMemoryActionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Label which displays a memory slider's value. */
+.settingsMemoryLabel {
+    font-size: 14px;
+    margin-right: 2%;
+}
+
+/* Range sliders for min and max memory settings. */
+#settingsMaxRAMRange,
+#settingsMinRAMRange {
+    width: 85%;
+}
+
+/* Memory status elements. */
+#settingsMemoryStatus {
+    display: flex;
+    flex-direction: column;
+}
+#settingsMemoryStatus > .settingsMemoryStatusContainer:not(:last-child){
+    margin-bottom: 50%;
+}
+.settingsMemoryStatusContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.settingsMemoryStatusTitle {
+    font-size: 12px;
+    color: grey;
+    font-weight: bold;
+}
+.settingsMemoryStatusValue {
+    color: lightgrey;
+    font-size: 16px;
+}
+
+/* Description for memory management. */
+#settingsMemoryDesc {
+    font-size: 10px;
+    margin: 20px 0px;
+    color: lightgrey;
+    font-weight: bold;
+}
+
+/* Status text which displays details on the selected executable. */
+#settingsJavaExecDetails {
+    font-weight: bold;
+    color: grey;
+    font-size: 12px;
+}
+
+/* Main container for the JVM options setting. */
+#settingsJVMOptsContainer {
+    width: 75%;
+}
+
+/* JVM options title. */
+#settingsJVMOptsTitle {
+    margin-bottom: 10px;
+}
+
+/* Wrapper container for the actionable elements. */
+#settingsJVMOptsContent {
+    display: flex;
+    width: 90%;
+}
+
+/* Text field to input the JVM options. */
+#settingsJVMOptsVal {
+    border-radius: 0px 3px 3px 0px !important;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+#settingsJVMOptsContent:focus-within > .settingsJavaIcon {
+    background: rgba(126, 126, 126, 0.87);
+}
+
+/* Description for the JVM options setting. */
+#settingsJVMOptsDesc {
+    font-size: 10px;
+    margin: 20px 0px;
+    color: lightgrey;
+    font-weight: bold;
+    width: 89%;
+}
+
+

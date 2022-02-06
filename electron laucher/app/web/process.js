@@ -46,10 +46,23 @@ async function sett()
 {
 
     var consst = document.getElementById("main"); 
+    var settp = document.getElementById("settp"); 
     var bod = document.getElementById("bod"); 
     
     consst.classList.toggle('hides');
+    //settp.classList.toggle('show');
     bod.classList.toggle('settings');
+
+    const myInterval = setInterval(myTimer, 300);
+
+function myTimer() {
+  const date = new Date();
+  window.location.href = "settings.html";
+}
+
+    
+
+    
 
 eel.expose(gameLauch);
 function gameLauch()
