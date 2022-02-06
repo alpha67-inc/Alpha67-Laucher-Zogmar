@@ -82,6 +82,7 @@ async function getPercentValue()
       load.classList.toggle('hide');
       cont.classList.toggle('hide');
       btn.classList.toggle('show').disabled = false;
+      window.location.reload();
       //alert("finish")
     } 
 

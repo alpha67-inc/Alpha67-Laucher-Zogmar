@@ -1,6 +1,8 @@
 electron laucher/node_modules
 electron laucher/app/node_modules
 electron laucher/.vscode
+.electron laucher\app/dist
+.electron laucher\app/build
 examples
 test
 .idea
@@ -8,3 +10,4 @@ test
 .idea/inspectionProfiles/Project_Default.xml
 electron laucher/microsoftLogin.exe
 electron laucher/Python39/
+electron laucher/app/dist/

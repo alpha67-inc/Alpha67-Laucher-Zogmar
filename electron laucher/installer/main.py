@@ -1,3 +1,7 @@
+import time
+
+time.sleep(10)
+
 import json
 from ttkbootstrap import Style
 from tkinter.ttk import Progressbar
@@ -370,6 +374,7 @@ if __name__ == "__main__":
 
         my_gui = MainWindow()
         root.mainloop()
+        time.sleep(10)
     except:
         import traceback
         print("error")

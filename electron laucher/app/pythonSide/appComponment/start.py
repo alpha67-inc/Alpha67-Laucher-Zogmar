@@ -43,8 +43,8 @@ def getSelectVersion():
             eel.noc()
             return None
             
-def mino(command):
-    subprocess.call(command, stdout=subprocess.PIPE)
+def execute_command(command):
+    subprocess.call(command)
 
     
 def ree():
@@ -52,7 +52,7 @@ def ree():
         print("test")
         time.sleep(0.5)
 
-def execute_command(command):
+def execute_commands(command):
     print(command)
     eel.spawn(mino(command))
 
@@ -325,9 +325,8 @@ def minecraft(n):
 
         try:
             forgeLauch = forge_version.replace("-", "-forge-")
-        except:
-            print("forge version can be download or not exist")
-            forgeLauch = None
+        except Exception as e: 
+	        print(e)
         print(forgeLauch)
 
         #if you lauche minecraft vanilla
@@ -521,7 +520,9 @@ def minecraft(n):
             options = {
                 "username": username,
                 "uuid": uuid.uuid4().hex,
-                "token": ""
+                "token": "",
+                "executablePath": "C:\Program Files\Java\jre1.8.0_202/bin/javaw.exe",
+                "launcherName": "PyMyMC"
             }
 
             print(forge_version)
@@ -532,16 +533,13 @@ def minecraft(n):
                 print(command)
                 execute_command(command)
             elif motor == "forge":
-                try:
-                    print("crack, lauching minecraft, version:"+forgeLauch)
-                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                    minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
-                        forgeLauch, directory, options)
-                    print(minecraft_command)
 
-                    execute_command(minecraft_command)
-                except:
-                    None
+                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(forgeLauch, directory, options)
+                print(minecraft_command)
+                print("execute command pour crack forge pas alpha")
+                execute_command(minecraft_command)
+
     
 
 def start(n):

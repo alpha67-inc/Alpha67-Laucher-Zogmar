@@ -9,7 +9,7 @@ from ast import literal_eval
 import tkinter
 from tkinter import filedialog
 #from win10toast_click import ToastNotifier
-import glob
+
 import sys
 import pythonSide.appComponment.ModpackDownloader.version as version
 
