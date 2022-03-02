@@ -1,1 +1,1 @@
-python -m eel app.py web
+start start.exe

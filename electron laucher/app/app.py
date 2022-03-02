@@ -12,7 +12,7 @@ try:
 	eel.init('web')
 
 	start()
-	eel.returnInfo()(lambda n: print('Got this from Javascript:', n))
+
 
 
 
@@ -41,10 +41,6 @@ try:
 	def print_num(n):
 		print('Got this from Javascript:', n)
 
-	# Do the same with an inline lambda as callback
-	@eel.expose
-	def prints():
-		eel.returnInfo()(lambda n: print(n))
 
 
 	eel.start('hello.html', mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'])

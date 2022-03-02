@@ -41,10 +41,14 @@ async function start()
 
 }
 
+function settP() {
+  eel.isUseS()
+}
 
-async function sett()
+
+eel.expose(sett)
+function sett()
 {
-
     var consst = document.getElementById("main"); 
     var settp = document.getElementById("settp"); 
     var bod = document.getElementById("bod"); 
@@ -130,9 +134,18 @@ async function run() {
 }
 
 async function connection() {
+
+  eel.isUseC();
+
+}
+
+eel.expose(sett2)
+function sett2()
+{
   window.localStorage.removeItem('invalid');
   window.location.href = "connection/connection.html";
 }
+
 
 eel.expose
 function updatePrgressBar(){

@@ -1,27 +1,20 @@
 import time
-
-time.sleep(10)
-
 import json
 from ttkbootstrap import Style
 from tkinter.ttk import Progressbar
 from tkinter.messagebox import askquestion, showinfo
 from tkinter import Label, Canvas, PhotoImage
-import tkinter as tk
+
 import sys
 import os
 import time
-from threading import Thread
-from tkvideo import tkvideo
-import platform
-import psutil
-import platform
+
 from tkinter import *
 import threading
-import minecraft_launcher_lib
-import wget
+
 import urllib.request
 from zipfile import ZipFile
+import shutil
 
 class MainWindow():
 
@@ -38,6 +31,7 @@ class MainWindow():
                 self.root.configure(bg="#3a3a3a")
                 self.root.title("Alpha67 Updater")
                 self.root.geometry("761x403+140+50")
+                self.root.iconbitmap("icon.ico")
 
                 Tk_Width = 761
                 Tk_Height = 403
@@ -152,6 +146,29 @@ class MainWindow():
 
             user = os.getlogin()
 
+            try:
+
+                with open("C:/Users/"+user+"/AppData/Local/laucher67/app/infLau.json") as json_file:
+
+                    data = json.load(json_file)
+                    print(data)
+
+                    executable = data["executable-name"]
+
+                try:
+                    os.system("taskkill /im "+ executable)
+                    os.system("taskkill /im Electron.exe")
+                except:
+                    print("can't kill"+executable+"or the process not exist")
+
+            except:
+                print("can't find file infLau.json")
+
+
+
+
+            
+
             response = urllib.request.urlopen("https://api.github.com/repos/vultorio67/alpha67-laucher/releases")
             data = json.loads(response.read())
             print(data)
@@ -165,85 +182,67 @@ class MainWindow():
             data = data[0]
             version = data["tag_name"]
 
-            if "all" in version:
-                print("all")
-
-                time.sleep(0.4)
-                print("supression de fichier.")
-
-                print(os.listdir("C:/Users/"+user+"/AppData\Local\laucher67/"))
 
 
-                os.remove("C:/Users/"+user+"/AppData\Local\laucher67/")
+            time.sleep(0.4)
+            print("supression de fichier.")
 
-                user = os.getlogin()
-                print(url)
-                print("démarrage du téléchargeny")
-                #urllib.request.urlretrieve(url, "C:/Users/"+user+"/AppData\Local\laucher67/app.zip")
-                with ZipFile("C:/Users/"+user+"/AppData\Local\laucher67/app.zip", 'r') as zip:
-                    zip.printdir()
-                    zip.extractall("C:/Users/"+user+"/AppData\Local\laucher67/")
+            print(os.listdir("C:/Users/"+user+"/AppData\Local\laucher67/"))
 
-                f = open("C:/Users/"+user+"/AppData\Local\laucher67/version.txt", "w")
-                f.write(str(version))
-                f.close()
+            shutil.rmtree("C:/Users/"+user+"/AppData\Local\laucher67/")
 
-            if "nodes" in version:
-                print("nodes")
-                time.sleep(0.4)
-                print("démarrage du téléchargement...")
+            try:
+                None
+            except:
+                try:
+
+                    os.remove("C:/Users/"+user+"/AppData\Local\laucher67/")
+                except:
+                    None
+                print("can't remove file")
 
 
-                os.remove("C:/Users/"+user+"/AppData\Local\laucher67/app/node_modules")
+            user = os.getlogin()
+            print(url)
+            print("démarrage du téléchargeny")
 
-                user = os.getlogin()
-                print(url)
-                urllib.request.urlretrieve(url, "C:/Users/"+user+"/AppData\Local\laucher67/app.zip")
-                with ZipFile("C:/Users/"+user+"/AppData\Local\laucher67/app.zip", 'r') as zip:
-                    zip.printdir()
-                    zip.extractall("C:/Users/"+user+"/AppData\Local\laucher67/app")
+            try: 
+                os.mkdir("C:/Users/"+user+"/AppData\Local\laucher67/") 
+            except OSError as error: 
+                print(error)  
 
-                f = open("C:/Users/"+user+"/AppData\Local\laucher67/version.txt", "w")
-                f.write(str(version))
-                f.close()
+            def cbk(a,b,c):  
 
-            if "python" in version:
-                print("python")
-                time.sleep(0.4)
-                print("démarrage du téléchargement...")
+                '''''Callback function 
+                @a:Downloaded data block 
+                @b:Block size 
+                @c:Size of the remote file 
+                '''  
+                per=100.0*a*b/c  
+                if per>100:  
+                    per=100 
 
+                
 
-                os.remove("C:/Users/"+user+"/AppData\Local\laucher67/Python39")
+                
+                print (per, a, b, c) 
 
-                user = os.getlogin()
-                print(url)
-                urllib.request.urlretrieve(url, "C:/Users/"+user+"/AppData\Local\laucher67/app.zip")
-                with ZipFile("C:/Users/"+user+"/AppData\Local\laucher67/app.zip", 'r') as zip:
-                    zip.printdir()
-                    zip.extractall("C:/Users/"+user+"/AppData\Local\laucher67/")
+                tex = "telechargement du laucher : "+str(int(per))+"%"
+                
+                self.canvas.itemconfig(self.info, text=tex)
 
-                f = open("C:/Users/"+user+"/AppData\Local\laucher67/version.txt", "w")
-                f.write(str(version))
-                f.close()
+            folder = "C:/Users/"+user+"/AppData\Local\laucher67/app.zip"
 
-            if "alpha" in version:
-                print("alpha")
-                time.sleep(0.4)
-                print("démarrage du téléchargement...")
+            urllib.request.urlretrieve(url, folder, cbk)
+            
+            with ZipFile("C:/Users/"+user+"/AppData\Local\laucher67/app.zip", 'r') as zip:
+                zip.printdir()
+                zip.extractall("C:/Users/"+user+"/AppData\Local\laucher67/")
 
+            f = open("C:/Users/"+user+"/AppData\Local\laucher67/version.txt", "w")
+            f.write(str(version))
+            f.close()
 
-                os.remove("C:/Users/"+user+"/AppData\Local\laucher67/app")
-
-                user = os.getlogin()
-                print(url)
-                urllib.request.urlretrieve(url, "C:/Users/"+user+"/AppData\Local\laucher67/app.zip")
-                with ZipFile("C:/Users/"+user+"/AppData\Local\laucher67/app.zip", 'r') as zip:
-                    zip.printdir()
-                    zip.extractall("C:/Users/"+user+"/AppData\Local\laucher67/")
-
-                f = open("C:/Users/"+user+"/AppData\Local\laucher67/version.txt", "w")
-                f.write(str(version))
-                f.close()
 
 
         def checkUpdate():
@@ -278,7 +277,7 @@ class MainWindow():
             os.makedirs(MYDIR)
             print("created folder : ", MYDIR)
             createDirectory("laucher67", "C:/Users/"+user+"/AppData\Local/")
-            installApp()
+            updateAll()
             time.sleep(3)
             update = True
             needGetJsonAdress = False
@@ -341,13 +340,18 @@ class MainWindow():
 
         time.sleep(3)
 
+        os.system("C:/Users/"+user+"\AppData\Local\laucher67/app/start-app.exe")
+        
+
         print(self.info)
 
         root.destroy()
 
-        self.th1.stop()
+        os._exit(0)
 
-        os.system("C:/Users/"+user+"\AppData\Local\laucher67/app/app.exe")
+        sys.exit()
+
+
 
 
 
@@ -374,7 +378,7 @@ if __name__ == "__main__":
 
         my_gui = MainWindow()
         root.mainloop()
-        time.sleep(10)
+        time.sleep(2)
     except:
         import traceback
         print("error")

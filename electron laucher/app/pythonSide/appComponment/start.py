@@ -44,7 +44,17 @@ def getSelectVersion():
             return None
             
 def execute_command(command):
-    subprocess.call(command)
+
+    print("save of starting command !!")
+
+    import pickle
+
+    with open('command', 'wb') as fp:
+        pickle.dump(command, fp)
+
+    os.remove("launchingPart.txt")
+
+    subprocess.call("start.bat")
 
     
 def ree():
@@ -113,11 +123,14 @@ def minecraft(n):
         #self.ui.play.hide()
         print(motor)
         mpDownloader.down()
+        forge_version = "1.16.5"
+
         forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
 
 
 
         print(forge_version)
+        forge_version = "1.16.5-36.2.20"
 
         try:
             forgeLauch = forge_version.replace("-", "-forge-")
@@ -135,6 +148,8 @@ def minecraft(n):
             a = 100
             ok(a)
 
+        forge_version = "1.16.5-36.2.20"
+
         # if you lauche ;inecrqft forge
         if motor == "Forge":
             if forge_version == "None":
@@ -150,7 +165,6 @@ def minecraft(n):
                             if forgeLauch == f:
                                 print("version already download lauching minecraft")
                                 return True
-                                break
                     except:
                         None
 
@@ -163,8 +177,8 @@ def minecraft(n):
                         a = 100
                         ok(a)
 
-                    except:
-                        None
+                    except Exception as e:
+                        print(e)
 
         #self.ui.play.show()
         #self.ui.download.hide()
@@ -269,7 +283,7 @@ def minecraft(n):
             options = {
                 "username": username,
                 "uuid": uuid.uuid4().hex,
-                "token": ""
+                "token": "",
             }
 
             print(forge_version)
@@ -327,6 +341,7 @@ def minecraft(n):
             forgeLauch = forge_version.replace("-", "-forge-")
         except Exception as e: 
 	        print(e)
+
         print(forgeLauch)
 
         #if you lauche minecraft vanilla
@@ -550,5 +565,8 @@ def start(n):
 
 
 def lauch():
+    l = open("launchingPart.txt","w")
+    l.write("yes")
+    l.close
     eel.returnInfo()(lambda n: minecraft(n))
 

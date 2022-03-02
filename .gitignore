@@ -11,3 +11,9 @@ test
 electron laucher/microsoftLogin.exe
 electron laucher/Python39/
 electron laucher/app/dist/
+electron laucher/app/build/
+electron laucher/app/config/
+electron laucher/app/logs/
+
+electron laucher/app/microsoftLogin.exe
+electron laucher/installer/app.zip

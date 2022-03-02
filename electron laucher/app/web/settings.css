@@ -7,10 +7,12 @@ body {
 .settingsTabHeaderText{
     font-size: 30px;
     font-family: 'Avenir Medium';
+    color:aliceblue;
 }
 .settingsTabHeaderDesc{
     font-size: 20px;
     font-family: 'Avenir Medium';
+    color: antiquewhite;
 }
 
 #settingsGameResolutionContainer {
@@ -26,7 +28,7 @@ body {
     padding-top: 10%;
 }
 #settingsGameResolutionCross {
-    color: grey;
+    color: rgb(255, 255, 255);
     padding: 0px 10%;
 }
 #settingsGameWidth,
@@ -34,6 +36,7 @@ body {
     padding: 7.5px 5px;
     width: 75px;
 }
+
 
 
 
