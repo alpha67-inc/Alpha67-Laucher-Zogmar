@@ -14,28 +14,39 @@
 </div>
 <div id="settingsTabMinecraft" class="settingsTab">
     <div class="settingsTabHeader">
-        <span class="settingsTabHeaderText">Minecraft Settings</span>
+        <span class="settingsTabHeaderText">Game Resolution</span>
     </div>
     <div id="settingsGameResolutionContainer">
-        <span class="settingsFieldTitle">Game Resolution</span>
         <div id="settingsGameResolutionContent">
-            <input type="number" id="settingsGameWidth" min="0" cValue="GameWidth">
+            <input  id="settingsGameWidth"  cValue="GameWidth" value="auto">
             <div id="settingsGameResolutionCross">&#10006;</div>
-            <input type="number" id="settingsGameHeight" min="0" cValue="GameHeight">
+            <input id="settingsGameHeight"  cValue="GameHeight" value="auto">
         </div>
     </div>
 </div>
 
 <div id="settingsTabMinecraft" class="settingsTab">
     <div class="settingsTabHeader">
-        <span class="settingsTabHeaderText">Minecraft Settings</span>
+        <span class="settingsTabHeaderText">RAM usage</span>
     </div>
     <div id="settingsGameResolutionContainer">
-        <span class="settingsFieldTitle">Game Resolution</span>
         <div id="settingsGameResolutionContent">
-            <input type="number" id="settingsGameWidth" min="0" cValue="GameWidth">
+            <h2>min:</h2>
+            <input type="number" id="settingsGameWidth" min="0" cValue="GameWidth" value="1000">
             <div id="settingsGameResolutionCross">&#10006;</div>
-            <input type="number" id="settingsGameHeight" min="0" cValue="GameHeight">
+            <h2>max: </h2>
+            <input type="number" id="settingsGameHeight" min="0" cValue="GameHeight" value="3000">
+        </div>
+    </div>
+</div>
+
+<div id="java" class="settingsTab">
+    <div class="settingsTabHeader">
+        <span class="settingsTabHeaderText">Java executable</span>
+    </div>
+    <div id="settingsGameResolutionContainer">
+        <div id="settingsGameResolutionContent">
+            <input id="javain" class="javain">
         </div>
     </div>
 </div>
