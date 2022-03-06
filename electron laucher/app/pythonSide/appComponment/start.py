@@ -80,8 +80,48 @@ def ok(pr):
 
 def minecraft(n):
 
-
     user = os.getlogin()
+    settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
+
+    try:
+        with open(settings, 'r') as s:
+            data = json.load(s)
+    
+    except:
+
+        print("error")
+
+        defaultSett = {
+
+                "gameResolution": 
+                    {
+                        "x": "auto",
+                        "y": "auto"
+                    },
+
+                "ram": {
+                    "min": "1000",
+                    "max": "3000"
+                },
+
+                "java": "auto"
+            }
+
+        with open(settings, 'w') as outfile:
+            json.dump(defaultSett, outfile)
+
+        data = defaultSett
+
+    xx = data["gameResolution"]["x"]
+
+    y = data["gameResolution"]["y"]
+
+    min = data["ram"]["min"]
+
+    max = data["ram"]["max"]
+
+    java = data["java"]
+
 
     def maximum(max_value, value):
         max_value[0] = value
@@ -228,7 +268,8 @@ def minecraft(n):
             options = {
                 "username": login_data["selectedProfile"]["name"],
                 "uuid": login_data["selectedProfile"]["id"],
-                "token": login_data["accessToken"]
+                "token": login_data["accessToken"],
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
             }
 
             if motor == "vanilla":
@@ -254,7 +295,8 @@ def minecraft(n):
             options = {
                 "username": uInfo["name"],
                 "uuid": uInfo["id"],
-                "token": uInfo["access_token"]
+                "token": uInfo["access_token"],
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
             }
 
             if motor == "vanilla":
@@ -273,6 +315,8 @@ def minecraft(n):
         #########################################################################################################
         if login == "crack":
             print("okoksss")
+            ma = "-Xmx"+max+"m"
+            mi = "-Xms"+min+"m"
             with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
                 uInfo = json.load(file)
                 print(uInfo)
@@ -284,6 +328,7 @@ def minecraft(n):
                 "username": username,
                 "uuid": uuid.uuid4().hex,
                 "token": "",
+                "jvmArguments": [ma, mi]
             }
 
             print(forge_version)
@@ -340,8 +385,8 @@ def minecraft(n):
         try:
             forgeLauch = forge_version.replace("-", "-forge-")
         except Exception as e: 
-	        print(e)
-
+            print(e)
+        
         print(forgeLauch)
 
         #if you lauche minecraft vanilla
@@ -478,7 +523,8 @@ def minecraft(n):
             options = {
                 "username": login_data["selectedProfile"]["name"],
                 "uuid": login_data["selectedProfile"]["id"],
-                "token": login_data["accessToken"]
+                "token": login_data["accessToken"],
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
             }
 
 
@@ -506,7 +552,8 @@ def minecraft(n):
             options = {
                 "username": uInfo["name"],
                 "uuid": uInfo["id"],
-                "token": uInfo["access_token"]
+                "token": uInfo["access_token"],
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
             }
 
             if motor == "vanilla":
@@ -536,7 +583,7 @@ def minecraft(n):
                 "username": username,
                 "uuid": uuid.uuid4().hex,
                 "token": "",
-                "executablePath": "C:\Program Files\Java\jre1.8.0_202/bin/javaw.exe",
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
                 "launcherName": "PyMyMC"
             }
 
