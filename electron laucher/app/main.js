@@ -31,7 +31,7 @@ function createWindow () {
     backgroundColor: '#171614',
     icon: __dirname + '/icon.ico',
   })
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
 
   var resizeTimeout;

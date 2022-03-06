@@ -9,6 +9,20 @@ import uuid
 #import pythonSide.appComponment.ModpackDownloader.mpDownloader as mpDownloader
 
 
+def javaEx(what):
+
+    user = os.getlogin()
+    settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
+
+    with open(settings, 'r') as s:
+    	data = json.load(s)
+    	print(type(data))
+    
 
 
-print("ok")
+    if what == "GRX":
+        data = data["gameResolution"]
+        print(data)
+        return data
+
+print(javaEx("GRX"))

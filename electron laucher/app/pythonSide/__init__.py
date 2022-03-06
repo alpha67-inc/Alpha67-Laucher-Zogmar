@@ -132,3 +132,89 @@ def read():
     value = float(value)
     print(value)
     return value
+
+@eel.expose
+def javaEx(what):
+
+    user = os.getlogin()
+    settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
+
+    try:
+        with open(settings, 'r') as s:
+            data = json.load(s)
+    
+    except:
+
+        print("error")
+
+        defaultSett = {
+
+                "gameResolution": 
+                    {
+                        "x": "auto",
+                        "y": "auto"
+                    },
+
+                "ram": {
+                    "min": "1000",
+                    "max": "3000"
+                },
+
+                "java": "auto"
+            }
+
+        with open(settings, 'w') as outfile:
+            json.dump(defaultSett, outfile)
+
+        data = defaultSett
+
+    if what == "GRX":
+        data = data["gameResolution"]["x"]
+        print(data)
+        return data
+
+    if what == "GRY":
+        data = data["gameResolution"]["y"]
+        print(data)
+        return data
+
+    if what == "RAMMIN":
+        data = data["ram"]["min"]
+        print(data)
+        return data
+    
+    if what == "RAMMAX":
+        data = data["ram"]["max"]
+        print(data)
+        return data
+
+    if what == "JAVA":
+        data = data["java"]
+        print(data)
+        return data
+
+
+@eel.expose
+def saveSettings(x,y,min,max,java):
+
+    user = os.getlogin()
+    settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
+
+    sett = {
+
+        "gameResolution": 
+            {
+                "x": x,
+                "y": y
+            },
+
+        "ram": {
+            "min": min,
+            "max": max
+        },
+
+        "java": java
+    }
+
+    with open(settings, 'w') as outfile:
+            json.dump(sett, outfile)

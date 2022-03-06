@@ -17,3 +17,6 @@ electron laucher/app/logs/
 
 electron laucher/app/microsoftLogin.exe
 electron laucher/installer/app.zip
+*.gz
+*.gz
+*.log
