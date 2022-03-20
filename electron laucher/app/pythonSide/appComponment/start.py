@@ -1,4 +1,5 @@
 import os
+import shutil
 from sys import stdout
 import minecraft_launcher_lib
 from subprocess import *
@@ -154,7 +155,7 @@ def minecraft(n):
             return percent
 
         callback = {
-            "setStatus": lambda text: print(text),
+            "setStatus": lambda text: print(text.emite(text)),
             "setProgress": lambda value: updateBar(value, max_value),
             "setMax": lambda value: maximum(max_value, value)
         }
@@ -269,7 +270,10 @@ def minecraft(n):
                 "username": login_data["selectedProfile"]["name"],
                 "uuid": login_data["selectedProfile"]["id"],
                 "token": login_data["accessToken"],
-                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
+                "server": "alpha67.duckdns.org",
+                "port": "32451"
+
             }
 
             if motor == "vanilla":
@@ -296,7 +300,9 @@ def minecraft(n):
                 "username": uInfo["name"],
                 "uuid": uInfo["id"],
                 "token": uInfo["access_token"],
-                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
+                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
+                "server": "alpha67.duckdns.org",
+                "port": "32451"
             }
 
             if motor == "vanilla":
@@ -328,7 +334,9 @@ def minecraft(n):
                 "username": username,
                 "uuid": uuid.uuid4().hex,
                 "token": "",
-                "jvmArguments": [ma, mi]
+                "jvmArguments": [ma, mi],
+                "server": "alpha67.duckdns.org",
+                "port": "32451"
             }
 
             print(forge_version)
@@ -363,244 +371,291 @@ def minecraft(n):
         max_value = [0]
 
         #@eel.expose
-        def updateBarf(value, maxValue):
-            percent = 100 * int(value) / int(maxValue[0])
-            print(int(percent))
-            ok(percent)
-            eel.sleep(0.001)
-            return percent
-            #self.ui.download.setValue(percent)
+        def installVersion(needReinstall):
 
-        callback = {
-            "setStatus": lambda text: print(text),
-            "setProgress": lambda value: updateBarf(value, max_value),
-            "setMax": lambda value: maximum(max_value, value)
-        }
-
-
-        #self.ui.download.show()
-        #self.ui.play.hide()
-        forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
-
-        try:
-            forgeLauch = forge_version.replace("-", "-forge-")
-        except Exception as e: 
-            print(e)
+            version = n[1]
         
-        print(forgeLauch)
+            motor = n[0]
+            user = os.getlogin()
+            def maximum(max_value, value):
+                max_value[0] = value
 
-        #if you lauche minecraft vanilla
-        print("the motor is : ",motor)
-        if motor == "vanilla":
-            print("dowload of minecraft vanilla : ",version)
-            directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+            print('start minecraft')
+            max_value = [0]
 
-            def checkVersionDoawnload():
-                try:
-                    directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
-                    files = os.listdir(directory_mod)
-                    for f in files:
-                        print("file: "+f)
-                        if version == f:
-                            print("version already download lauching minecraft")
-                            return True
-                            break
-                except:
-                    print("cannot install version:", version)
+            def updateBarf(value, maxValue):
+                percent = 100 * int(value) / int(maxValue[0])
+                ok(percent)
+                eel.sleep(0.001)
+                return percent
+                #self.ui.download.setValue(percent)
+
+            def callbackInfo(text):
+                if text.isdigit():
+                    print("oksss")
                     return None
+                    
+                else:
+                    print("ok")
+                    return text
 
-            if checkVersionDoawnload() == None:
-                try:
-                    print("doawnloading:",version)
-                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                    minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
-
-                    print("update version json file")
-
-                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'r') as file:
-                        data = json.load(file)
-
-                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
-                        x = {"version": version}
-                        data.update(x)
-
-                        print(data)
-
-                        json.dump(data, file)
-
-                    #return uInfo
-
-                    a = 100
-                    ok(a)
-
-                except Exception as e: 
-                    with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
-                        print("update firste line version json.")
-                        x = {"version": version}
-                        json.dump(x, file)
-                    print(repr(e))
+            callback = {
+                "setStatus": lambda text: callbackInfo(text),
+                "setProgress": lambda value: updateBarf(value, max_value),
+                "setMax": lambda value: maximum(max_value, value)
+            }
 
 
+            #self.ui.download.show()
+            #self.ui.play.hide()
+            forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
+
+            try:
+                forgeLauch = forge_version.replace("-", "-forge-")
+                print(forgeLauch)
+            except Exception as e: 
+                print(e)
             
-            a = 128
-            ok(a)
+            
 
-        #if you lauche ;inecrqft forge
-        if motor == "forge":
-            if forge_version == "None":
-                print("version non disponible de forge")
+            #if you lauche minecraft vanilla
+            print("the motor is : ",motor)
+            if motor == "vanilla":
+                print("dowload of minecraft vanilla : ",version)
+                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
 
-            else:
                 def checkVersionDoawnload():
                     try:
                         directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
                         files = os.listdir(directory_mod)
                         for f in files:
                             print("file: "+f)
-                            if forgeLauch == f:
+                            if version == f:
                                 print("version already download lauching minecraft")
                                 return True
                                 break
                     except:
-                        print("version note found starting his installation.")
+                        print("cannot install version:", version)
                         return None
 
-                if checkVersionDoawnload() == None:
+                if checkVersionDoawnload() == None or needReinstall == True:
+                    
                     try:
-                        print("doawnloading:"+forgeLauch)
+                        print("doawnloading:",version)
                         directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                        minecraft_launcher_lib.forge.install_forge_version(forge_version, directory,
-                                                                            callback=callback)
-                        print(forgeLauch)
+                        try:
+                            shutil.rmtree('C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/versions/'+version)
+                        except:
+                            None
+
+                        minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
+
+                        print("update version json file")
+
+                        with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'r') as file:
+                            data = json.load(file)
+
+                        with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
+                            x = {"version": version}
+                            data.update(x)
+
+                            print(data)
+
+                            json.dump(data, file)
+
+                        #return uInfo
+
                         a = 100
                         ok(a)
 
-                    except:
-                        None
+                        if needReinstall == True:
+                            lauchGame()
 
+                    except Exception as e: 
+                        with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/version.json', 'w') as file:
+                            print("update firste line version json.")
+                            x = {"version": version}
+                            json.dump(x, file)
+                        print(repr(e))
+
+
+                
+                a = 128
+                ok(a)
+
+            #if you lauche ;inecrqft forge
+            if motor == "forge":
+                if forge_version == "None":
+                    print("version non disponible de forge")
+
+                else:
+                    def checkVersionDoawnload():
+                        try:
+                            directory_mod = 'C:/Users/'+user+'\AppData\Roaming\.alpha67\minecraft/versions'
+                            files = os.listdir(directory_mod)
+                            for f in files:
+                                print("file: "+f)
+                                if forgeLauch == f:
+                                    print("version already download lauching minecraft")
+                                    return True
+                                    break
+                        except:
+                            print("version note found starting his installation.")
+                            return None
+
+                    if checkVersionDoawnload() == None or needReinstall == True:
+                        try:
+                            print("doawnloading:"+forgeLauch)
+                            directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                            shutil.rmtree('C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/versions/'+forge_version)
+                            minecraft_launcher_lib.forge.install_forge_version(forge_version, directory,
+                                                                                callback=callback)
+
+                            print(forgeLauch)
+                            a = 100
+                            ok(a)
+
+                            if needReinstall == True:
+                                lauchGame()
+
+                        except:
+                            None
+
+        installVersion(False)
         #self.ui.play.show()
         #self.ui.download.hide()
 
+        def lauchGame():
+            ###########
+            if login == "mojang":
+                print("okok")
+                with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
+                    uInfo = json.load(file)
+                    print(uInfo)
+                    # uInfo = literal_eval(uInfo)
 
-        ###########
-        if login == "mojang":
-            print("okok")
-            with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
-                uInfo = json.load(file)
-                print(uInfo)
-                # uInfo = literal_eval(uInfo)
+                    uInfo = uInfo['mojang']
+                    uInfo = uInfo[0]
+                    username = uInfo['username']
+                    password = uInfo['password']
+                    key = uInfo['key']
 
-                uInfo = uInfo['mojang']
-                uInfo = uInfo[0]
-                username = uInfo['username']
-                password = uInfo['password']
-                key = uInfo['key']
+                fernet = Fernet(key)
 
-            fernet = Fernet(key)
+                passwordEnc = str(user + "67")
+                print(type(password))
+                password = password.replace("'", '')
+                password = password[1:]
+                print("info ###################################")
+                print(password)
+                username = username.replace("'", '')
+                username = username[1:]
+                print(fernet)
+                print(username)
+                print("info #####################################")
 
-            passwordEnc = str(user + "67")
-            print(type(password))
-            password = password.replace("'", '')
-            password = password[1:]
-            print("info ###################################")
-            print(password)
-            username = username.replace("'", '')
-            username = username[1:]
-            print(fernet)
-            print(username)
-            print("info #####################################")
+                username = str.encode(username)
+                password = str.encode(password)
+                
 
-            username = str.encode(username)
-            password = str.encode(password)
-            
+                us = fernet.decrypt(username).decode()
+                pa = fernet.decrypt(password).decode()
 
-            us = fernet.decrypt(username).decode()
-            pa = fernet.decrypt(password).decode()
+                login_data = minecraft_launcher_lib.account.login_user(us, pa)
 
-            login_data = minecraft_launcher_lib.account.login_user(us, pa)
-
-            print(login_data)
-            options = {
-                "username": login_data["selectedProfile"]["name"],
-                "uuid": login_data["selectedProfile"]["id"],
-                "token": login_data["accessToken"],
-                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
-            }
-
-
-            if motor == "vanilla":
-                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
-                                                                                options)
-                execute_command(command)
-            elif motor == "forge":
-                print("crack, lauching minecraft, version:"+forgeLauch)
-                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
-                    forgeLauch, directory, options)
-
-                execute_command(minecraft_command)
+                print(login_data)
+                options = {
+                    "username": login_data["selectedProfile"]["name"],
+                    "uuid": login_data["selectedProfile"]["id"],
+                    "token": login_data["accessToken"],
+                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
+                }
 
 
-        #################################################################################################
-        if login == "microsoft":
-            print("okok")
-            with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/ACI.json', 'r') as file:
-                uInfo = json.load(file)
-                print(uInfo)
-                # uInfo = literal_eval(uInfo)
-            options = {
-                "username": uInfo["name"],
-                "uuid": uInfo["id"],
-                "token": uInfo["access_token"],
-                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
-            }
+                if motor == "vanilla":
+                    minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
+                                                                                    options)
+                    execute_command(command)
+                elif motor == "forge":
+                    print("crack, lauching minecraft, version:"+forgeLauch)
+                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
+                        forgeLauch, directory, options)
 
-            if motor == "vanilla":
-                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
-                                                                                options)
-                execute_command(command)
-            elif motor == "Forge":
-                print("crack, lauching minecraft, version:"+forgeLauch)
-                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
-                    forgeLauch, directory, options)
+                    execute_command(minecraft_command)
 
-                execute_command(minecraft_command)
 
-        #########################################################################################################
-        if login == "crack":
-            print("okoksss")
-            with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
-                uInfo = json.load(file)
-                print(uInfo)
-                uInfo = uInfo['crack']
-                uInfo = uInfo[0]
-                username = uInfo['username']
-                # uInfo = literal_eval(uInfo)
-            options = {
-                "username": username,
-                "uuid": uuid.uuid4().hex,
-                "token": "",
-                "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
-                "launcherName": "PyMyMC"
-            }
+            #################################################################################################
+            if login == "microsoft":
+                print("okok")
+                with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/ACI.json', 'r') as file:
+                    uInfo = json.load(file)
+                    print(uInfo)
+                    # uInfo = literal_eval(uInfo)
+                options = {
+                    "username": uInfo["name"],
+                    "uuid": uInfo["id"],
+                    "token": uInfo["access_token"],
+                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
+                }
 
-            print(forge_version)
-            print(motor)
-            if motor == "vanilla":
-                minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory, options)
-                print(command)
-                execute_command(command)
-            elif motor == "forge":
+                if motor == "vanilla":
+                    minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory,
+                                                                                    options)
+                    execute_command(command)
+                elif motor == "Forge":
+                    print("crack, lauching minecraft, version:"+forgeLauch)
+                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(
+                        forgeLauch, directory, options)
 
-                directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
-                minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(forgeLauch, directory, options)
-                print(minecraft_command)
-                print("execute command pour crack forge pas alpha")
-                execute_command(minecraft_command)
+                    execute_command(minecraft_command)
+
+            #########################################################################################################
+            if login == "crack":
+                print("okoksss")
+                with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
+                    uInfo = json.load(file)
+                    print(uInfo)
+                    uInfo = uInfo['crack']
+                    uInfo = uInfo[0]
+                    username = uInfo['username']
+                    # uInfo = literal_eval(uInfo)
+                options = {
+                    "username": username,
+                    "uuid": uuid.uuid4().hex,
+                    "token": "",
+                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
+                    "launcherName": "PyMyMC"
+                }
+                try:
+                    print(forge_version)
+                except:
+                    None
+                print(motor)
+                if motor == "vanilla":
+                    minecraft_directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    try:
+                        command = minecraft_launcher_lib.command.get_minecraft_command(version, minecraft_directory, options)
+                        print(command)
+                        execute_command(command)
+                    except:
+                        print("can't lauch the game, starting reinstall of the version")
+                        installVersion(True)
+
+
+                    
+                elif motor == "forge":
+
+                    directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/minecraft/'
+                    minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(forgeLauch, directory, options)
+                    print(minecraft_command)
+                    print("execute command pour crack forge pas alpha")
+                    execute_command(minecraft_command)
+
+        lauchGame()
 
     
 
