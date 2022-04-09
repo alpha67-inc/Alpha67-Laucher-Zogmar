@@ -2,13 +2,12 @@ import eel
 import random
 from pythonSide import *
 import time
+import traceback
+import crashreport
+crashreport.inject_excepthook(lambda etype, value, tb, dest: print('Dumped crash report to', dest))
 
-
-
-try:
-
+def main_div_by_0():
 	import subprocess 
-	# Set web files folder
 	eel.init('web')
 
 	start()
@@ -49,9 +48,28 @@ try:
 
 	time.sleep(5)
 
-except Exception as e: 
-	print(e)
 
-	time.sleep(5)
+def main_double():
+    try:
+        main_div_by_0()
+    except Exception:
+        cause = None
+        try:
+            5 + 's'
+        except TypeError as e:
+            cause = e
+        raise ValueError('exception raised') from cause
+
+
+def main_recursion():
+    x = 5
+    main_recursion()
+
+
+if __name__ == '__main__':
+	main_double()
+	
+
+
 
 

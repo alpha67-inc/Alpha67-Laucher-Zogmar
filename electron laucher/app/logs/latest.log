@@ -1,13 +1,29 @@
-[18:28:47] [Client thread/INFO]: Setting user: vultorio
-[18:28:49] [Client thread/INFO]: LWJGL Version: 3.2.1 build 12
-[18:28:54] [Client thread/INFO]: Narrator library for x64 successfully loaded
-[18:28:54] [Client thread/INFO]: Built for minecraft version 1.14
-[18:28:55] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
-[18:28:58] [Client thread/INFO]: OpenAL initialized.
-[18:28:58] [Client thread/INFO]: Sound engine started
-[18:28:58] [Client thread/INFO]: Created: 1024x512 textures-atlas
-[18:28:58] [Client thread/INFO]: Created: 256x256 textures/particle-atlas
-[18:28:58] [Client thread/INFO]: Created: 256x256 textures/painting-atlas
-[18:28:58] [Client thread/INFO]: Created: 256x128 textures/mob_effect-atlas
-[18:28:59] [Realms Notification Availability checker #1/ERROR]: Realms error code: 400 message: 
-[18:29:45] [Client thread/INFO]: Stopping!
+[09Apr2022 20:23:57.494] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--username, vultorio, --version, 1.14.4-forge-28.2.26, --gameDir, C:/Users/evan\AppData\Roaming\.alpha67/minecraft/, --assetsDir, C:/Users/evan\AppData\Roaming\.alpha67/minecraft/assets, --assetIndex, 1.14, --uuid, 6e67eaa948d847559c07c7193b6bc520, --accessToken, ????????, --userType, mojang, --versionType, release, --launchTarget, fmlclient, --fml.forgeVersion, 28.2.26, --fml.mcVersion, 1.14.4, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20190829.143755]
+[09Apr2022 20:23:57.497] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 4.1.0+62+5bfa59b starting: java version 1.8.0_51 by Oracle Corporation
+[09Apr2022 20:23:57.809] [main/INFO] [net.minecraftforge.fml.loading.FixSSL/CORE]: Added Lets Encrypt root certificates as additional trust
+[09Apr2022 20:23:58.623] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'fmlclient' with arguments [--version, 1.14.4-forge-28.2.26, --gameDir, C:\Users\evan\AppData\Roaming\.alpha67\minecraft, --assetsDir, C:\Users\evan\AppData\Roaming\.alpha67\minecraft\assets, --uuid, 6e67eaa948d847559c07c7193b6bc520, --username, vultorio, --assetIndex, 1.14, --accessToken, ????????, --userType, mojang, --versionType, release]
+[09Apr2022 20:23:59.985] [main/INFO] [net.minecraft.client.Minecraft/]: Setting user: vultorio
+[09Apr2022 20:24:05.435] [main/INFO] [net.minecraft.client.Minecraft/]: LWJGL Version: 3.2.2 build 10
+[09Apr2022 20:24:07.111] [modloading-worker-1/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 28.2.26, for MC 1.14.4 with MCP 20190829.143755
+[09Apr2022 20:24:07.143] [modloading-worker-1/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v28.2.26 Initialized
+[09Apr2022 20:24:08.878] [main/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
+[09Apr2022 20:24:09.731] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file C:\Users\evan\AppData\Roaming\.alpha67\minecraft\config\forge-client.toml is not correct. Correcting
+[09Apr2022 20:24:09.743] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.zoomInMissingModelTextInGui was corrected from null to false
+[09Apr2022 20:24:09.751] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.forgeCloudsEnabled was corrected from null to true
+[09Apr2022 20:24:09.784] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.disableStairSlabCulling was corrected from null to false
+[09Apr2022 20:24:09.794] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.forgeLightPipelineEnabled was corrected from null to true
+[09Apr2022 20:24:09.799] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.selectiveResourceReloadEnabled was corrected from null to true
+[09Apr2022 20:24:09.823] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.allowEmissiveItems was corrected from null to true
+[09Apr2022 20:24:09.827] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.experimentalForgeLightPipelineEnabled was corrected from false to null
+[09Apr2022 20:24:09.827] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.useCombinedDepthStencilAttachment was corrected from false to null
+[09Apr2022 20:24:09.827] [Server-Worker-5/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key client.forceSystemNanoTime was corrected from false to null
+[09Apr2022 20:24:09.945] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[09Apr2022 20:24:10.573] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 28.2.26 Target: null
+[09Apr2022 20:24:11.730] [main/INFO] [net.minecraft.client.audio.SoundSystem/]: OpenAL initialized.
+[09Apr2022 20:24:11.730] [main/INFO] [net.minecraft.client.audio.SoundEngine/SOUNDS]: Sound engine started
+[09Apr2022 20:24:11.858] [main/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 512x512 textures-atlas
+[09Apr2022 20:24:12.317] [main/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/particle-atlas
+[09Apr2022 20:24:12.318] [main/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/painting-atlas
+[09Apr2022 20:24:12.319] [main/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 128x128 textures/mob_effect-atlas
+[09Apr2022 20:24:12.771] [Realms Notification Availability checker #1/ERROR] [com.mojang.realmsclient.client.RealmsClient/]: Realms error code: 400 message: 
+[09Apr2022 20:24:15.144] [main/INFO] [net.minecraft.client.Minecraft/]: Stopping!

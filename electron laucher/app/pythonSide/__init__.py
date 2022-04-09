@@ -1,3 +1,4 @@
+from ast import Raise
 import os
 import minecraft_launcher_lib
 import requests
@@ -84,7 +85,9 @@ def startCrackLogin():
 
 @eel.expose
 def StartMinecraft():
+
     lauch()
+
 
 @eel.expose
 def isUseC():
@@ -218,3 +221,6 @@ def saveSettings(x,y,min,max,java):
 
     with open(settings, 'w') as outfile:
             json.dump(sett, outfile)
+
+
+

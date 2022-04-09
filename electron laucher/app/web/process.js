@@ -1,5 +1,7 @@
 //var fs = require('electron').remote.require('fs');
 
+var isLauch = false;
+
 eel.expose(returnInfo);
 function returnInfo(){
     var select = document.getElementById('motor');
@@ -15,29 +17,52 @@ function js_random() {
   return Math.random();
 }
 
+eel.expose(alertP);
+function alertP(errorP) {
+  alert("The python fonction of the laucher crash, with error ---> "+ errorP);
+}
+
+
+eel.expose(message);
+function message(message) {
+  alert(message);
+  isLauch = false;
+  window.location.reload();
+}
+
+function onload()
+{
+  var isLauch = false;
+}
+
 async function start()
 {
-//alert("start");
 
-  var login = await eel.getSelectVersion()();
-  console.log(login);
-
-  if (login != null)
+  if (isLauch == false)
   {
-    await getPercentValue()
-    await run()
-
-    var an = document.getElementById("loader"); 
-    var btn = document.getElementById("wrapper"); 
-    var cont = document.getElementById("test"); 
-    
-    an.classList.toggle('show');
-    cont.classList.toggle('show');
-    btn.classList.toggle('hide').disabled = true;
-
-    
+    var login = await eel.getSelectVersion()();
+    console.log(login);
+  
+    if (login != null)
+    {
+      await getPercentValue()
+      await run()
+  
+      var an = document.getElementById("loader"); 
+      var btn = document.getElementById("wrapper"); 
+      var cont = document.getElementById("test"); 
+      
+      an.classList.toggle('show');
+      cont.classList.toggle('show');
+      btn.classList.toggle('hide').disabled = true;
+  
+      
+    }
   }
-
+  else 
+  {
+    alert("Minecraft is already lauch or being install !!")
+  }
 
 }
 
@@ -76,6 +101,7 @@ function gameLauch()
 
 }
 
+
 }
 
 async function getPercentValue()
@@ -96,10 +122,10 @@ async function getPercentValue()
     if (width >= 128) {
       clearInterval(identity);
       //alert("stop")
-      load.classList.toggle('hide');
+      //load.classList.toggle('hide');
       cont.classList.toggle('hide');
-      btn.classList.toggle('show').disabled = false;
-      window.location.reload();
+      //btn.classList.toggle('show').disabled = false;
+      //window.location.reload();
       //alert("finish")
     } 
 
@@ -111,8 +137,6 @@ async function getPercentValue()
     
     }
   }
-
-
   }
 
 
@@ -124,6 +148,7 @@ async function run() {
   //elem.style.width = width + "%";
   //elem.innerHTML = width  + "%";
     //window.open('https://github.com', '_blank', 'top=500,left=200,frame=false,nodeIntegration=no')
+  isLauch = true;
   eel.StartMinecraft();
 
     
@@ -142,6 +167,7 @@ async function connection() {
 eel.expose(sett2)
 function sett2()
 {
+  alert('ok');
   window.localStorage.removeItem('invalid');
   window.location.href = "connection/connection.html";
 }
