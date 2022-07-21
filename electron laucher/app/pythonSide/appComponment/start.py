@@ -226,7 +226,7 @@ def minecraft(n):
 
 
             print(forge_version)
-            forge_version = "1.16.5-36.2.20"
+            forge_version = "1.16.5-36.2.34"
 
             try:
                 forgeLauch = forge_version.replace("-", "-forge-")
@@ -244,7 +244,7 @@ def minecraft(n):
                 a = 100
                 ok(a)
 
-            forge_version = "1.16.5-36.2.20"
+            forge_version = "1.16.5-36.2.34"
 
             # if you lauche ;inecrqft forge
             if motor == "Forge":

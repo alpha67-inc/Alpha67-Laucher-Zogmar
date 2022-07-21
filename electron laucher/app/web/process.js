@@ -167,7 +167,6 @@ async function connection() {
 eel.expose(sett2)
 function sett2()
 {
-  alert('ok');
   window.localStorage.removeItem('invalid');
   window.location.href = "connection/connection.html";
 }

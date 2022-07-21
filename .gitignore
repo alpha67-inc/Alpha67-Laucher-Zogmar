@@ -20,3 +20,5 @@ electron laucher/installer/app.zip
 *.gz
 *.gz
 *.log
+*.pyc
+electron laucher/app/launchingPart.txt

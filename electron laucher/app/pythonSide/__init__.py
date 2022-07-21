@@ -91,23 +91,8 @@ def StartMinecraft():
 
 @eel.expose
 def isUseC():
-    try:
-        file1 = open("launchingPart.txt","r+") 
-        i = file1.read()
-        print(i)
 
-        if i == "yes":
-            print("yes")
-            None
-        else:
-            print("ok")
-            print("in process")
-            eel.sett2()()
-    
-    except:
-        print("ok")
-        print("in process")
-        eel.sett2()()
+    eel.sett2()()
 
 @eel.expose
 def isUseS():
