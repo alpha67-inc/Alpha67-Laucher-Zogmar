@@ -86,7 +86,7 @@ function sett()
 
 function myTimer() {
   const date = new Date();
-  window.location.href = "settings.html";
+  window.location.href = "test.html";
 }
 
     
@@ -110,7 +110,7 @@ async function getPercentValue()
   var text = document.getElementById("re"); 
   var cont = document.getElementById("test"); 
   var width = 1;
-  var identity = setInterval(scene, 100);
+  var identity = setInterval(scene, 30);
   var load = document.getElementById("loader"); 
   var btn = document.getElementById("wrapper"); 
   var count = 0;

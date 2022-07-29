@@ -5,6 +5,7 @@ import minecraft_launcher_lib
 import json
 import sys
 import os
+from PyQt5.QtGui import QIcon
 
 CLIENT_ID = "f2107422-b90b-46cf-9d04-3dd3da989b44"
 SECRET = "I1G7Q~5IgcJGmIvT-jCzseZTZ2u6d8rJOf0cw"
@@ -15,7 +16,10 @@ class LoginWindow(QWebEngineView):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Login Window Example")
+        self.setWindowIcon(QIcon("micro.png"))
+
+
+        self.setWindowTitle("Capitalium Factory Microsoft Login")
 
         self.refresh_token_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "refresh_token.json")
 
@@ -40,29 +44,19 @@ class LoginWindow(QWebEngineView):
                 except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
                     pass"""
 
-        print("ok2")
-        print(minecraft_launcher_lib.microsoft_account.get_login_url(CLIENT_ID, REDIRECT_URL))
+
         self.load(QUrl(minecraft_launcher_lib.microsoft_account.get_login_url(CLIENT_ID, REDIRECT_URL)))
-        print("ok3")
         # Connects a function that is called when the url changed
         self.urlChanged.connect(self.new_url)
 
-        print("ok4")
         self.show()
 
     def new_url(self, url: QUrl):
-
-        print("ok5")
-
-        print(url)
         # Check if the url contains the code
         if minecraft_launcher_lib.microsoft_account.url_contains_auth_code(url.toString()):
 
-            print("ok")
             # Get the code from the url
             auth_code = minecraft_launcher_lib.microsoft_account.get_auth_code_from_url(url.toString())
-
-            print(auth_code)
             # Do the login
 
 

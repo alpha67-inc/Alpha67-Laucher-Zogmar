@@ -80,7 +80,7 @@ class MainWindow():
 
                 self.canvas.create_text(
                 400, 200,
-                text="Alpha67 Laucher 1.0",
+                text="Capitalium Factory Laucher 1.1",
                 fill="#c4c4c4",
                 font=("Segou Print", int(30.0)))
 

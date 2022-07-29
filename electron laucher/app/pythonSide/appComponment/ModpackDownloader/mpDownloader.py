@@ -116,6 +116,40 @@ def down():
 
         user = os.getlogin()
 
+        path = "C:/Users/" + user + "/alpha67_MP/mods/mp.zip"
+
+
+        def cbk(a,b,c):  
+
+            '''''Callback function 
+            @a:Downloaded data block 
+            @b:Block size 
+            @c:Size of the remote file 
+            '''  
+            per=100.0*a*b/c  
+            if per>100:  
+                per=100 
+
+            
+
+            
+            print (per, a, b, c) 
+
+            tex = "telechargement du laucher : "+str(int(per))+"% "
+            
+            #self.canvas.itemconfig(self.info, text=tex)
+
+        urllib.request.urlretrieve(url, path, cbk)
+        
+        with ZipFile(path, 'r') as zip:
+            zip.printdir()
+            zip.extractall(adress)
+
+
+
+
+
+
         urllib.request.urlretrieve(url, "C:/Users/" + user + "/alpha67_MP/mods/mp.zip")
 
         original = r'C:/Users/' + user + '/alpha67_MP/mp.zip'

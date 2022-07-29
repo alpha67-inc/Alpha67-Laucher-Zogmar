@@ -22,3 +22,5 @@ electron laucher/installer/app.zip
 *.log
 *.pyc
 electron laucher/app/launchingPart.txt
+electron laucher/app/export library.rar
+electron laucher/app/export library.rar

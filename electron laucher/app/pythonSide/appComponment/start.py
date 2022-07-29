@@ -17,6 +17,10 @@ from threading import *
 from concurrent.futures import ThreadPoolExecutor as Pool
 import logging
 
+from zipfile import ZipFile
+
+import urllib
+
 import crashreport
 
 import linecache
@@ -85,17 +89,12 @@ def execute_command(command):
             "%(levelname)-5s %(msg)s"))
 
     # wait for the process completion asynchronously
-    print("begin waiting")
-    pool = Pool(max_workers=1)
-    f = pool.submit(subprocess.call, command, shell=False)
-    f.add_done_callback(callback)
-    pool.shutdown(wait=False)
-    #subprocess.run(command)
 
-    while True:
-        if f.done() == True:
-            eel.message("Minecraft process is finish !!. If it is a crash please lauch with command line mode to see the error.")
-            break
+    subprocess.run(command)
+
+
+    eel.message("Minecraft process is finish !!. If it is a crash please lauch with command line mode to see the error.")
+
 
 
 
@@ -111,7 +110,7 @@ def execute_command(command):
     #with open('command', 'wb') as fp:
         #pickle.dump(command, fp)
 
-    #os.remove("launchingPart.txt")
+    os.remove("launchingPart.txt")
 
     #subprocess.call("start.bat")
 
@@ -139,9 +138,57 @@ def ok(pr):
 
 def minecraft(n):
 
-    try:
+    user = os.getlogin()
 
-        user = os.getlogin()
+    def installJava():
+        if os.path.exists("C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin") == False:
+            print("start installation of java")
+
+            #where the laucher download java, donc c'est la que tu modifie la version
+            url = "https://download.oracle.com/java/18/archive/jdk-18.0.2_windows-x64_bin.zip"
+
+            def cbk(a,b,c):  
+
+                '''''Callback function 
+                @a:Downloaded data block 
+                @b:Block size 
+                @c:Size of the remote file 
+                '''  
+                per=100.0*a*b/c  
+                if per>100:  
+                    per=100 
+
+                
+
+                
+                print (per, a, b, c) 
+
+                def updateBar(value):
+                    ok(value)
+                    eel.sleep(0.001)
+                    return value
+
+                updateBar(per)
+
+
+                tex = "telechargement du laucher : "+str(int(per))+"% "
+                
+                #self.canvas.itemconfig(self.info, text=tex)
+
+            path = "C:/Users/"+user+"/AppData/Roaming/.alpha67/java-18.zip"
+
+            urllib.request.urlretrieve(url, path, cbk)
+            
+            with ZipFile(path, 'r') as zip:
+                zip.printdir()
+                zip.extractall("C:/Users/"+user+"/AppData/Roaming/.alpha67/")
+
+            os.remove(path)
+
+    installJava()
+
+
+    try:
         settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
 
         try:
@@ -165,7 +212,7 @@ def minecraft(n):
                         "max": "3000"
                     },
 
-                    "java": "auto"
+                    "java": "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
                 }
 
             with open(settings, 'w') as outfile:
@@ -182,6 +229,29 @@ def minecraft(n):
         max = data["ram"]["max"]
 
         java = data["java"]
+
+        settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
+
+        if java == "auto":
+            java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
+            with open(settings, 'r+') as f:
+                data = json.load(f)
+                data['java'] = java 
+                json.dump(data)
+                f.close
+
+
+        if java == "auto":
+            java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
+            with open('C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json', 'r+') as f:
+                data = json.load(f)
+                data['java'] = java  # <--- add `id` value.
+                #f.seek(0)        # <--- should reset file position to the beginning.
+
+            with open('C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json', 'w') as outfile:
+                print("save : ", data)
+                json.dump(data, outfile)
+
         version = n[1]
         motor = n[0]
         print("motor is : ", motor)
@@ -259,6 +329,7 @@ def minecraft(n):
                             for f in files:
                                 print("file: " + f)
                                 if forgeLauch == f:
+                                    eel.gameLauch()()
                                     print("version already download lauching minecraft")
                                     return True
                         except:
@@ -317,12 +388,13 @@ def minecraft(n):
                 login_data = minecraft_launcher_lib.account.login_user(us, pa)
                 print(login_data)
                 options = {
+                    "executablePath": java,
                     "username": login_data["selectedProfile"]["name"],
                     "uuid": login_data["selectedProfile"]["id"],
                     "token": login_data["accessToken"],
                     "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
-                    "server": "alpha67.duckdns.org",
-                    "port": "32451"
+                    "server": "capitalium-factory.fr",
+                    "port": "25565"
 
                 }
 
@@ -347,12 +419,13 @@ def minecraft(n):
                     print(uInfo)
                     # uInfo = literal_eval(uInfo)
                 options = {
+                    "executablePath": java,
                     "username": uInfo["name"],
                     "uuid": uInfo["id"],
                     "token": uInfo["access_token"],
                     "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
-                    "server": "alpha67.duckdns.org",
-                    "port": "32451"
+                    "server": "capitalium-factory.fr",
+                    "port": "25565"
                 }
 
                 if motor == "vanilla":
@@ -381,12 +454,13 @@ def minecraft(n):
                     username = uInfo['username']
                     # uInfo = literal_eval(uInfo)
                 options = {
+                    "executablePath": java,
                     "username": username,
                     "uuid": uuid.uuid4().hex,
                     "token": "",
                     "jvmArguments": [ma, mi],
-                    "server": "alpha67.duckdns.org",
-                    "port": "32451"
+                    "server": "capitalium-factory.fr",
+                    "port": "25565"
                 }
 
                 print(forge_version)
@@ -619,6 +693,7 @@ def minecraft(n):
 
                     print(login_data)
                     options = {
+                        "executablePath": java,
                         "username": login_data["selectedProfile"]["name"],
                         "uuid": login_data["selectedProfile"]["id"],
                         "token": login_data["accessToken"],
@@ -648,6 +723,7 @@ def minecraft(n):
                         print(uInfo)
                         # uInfo = literal_eval(uInfo)
                     options = {
+                        "executablePath": java,
                         "username": uInfo["name"],
                         "uuid": uInfo["id"],
                         "token": uInfo["access_token"],
@@ -678,6 +754,7 @@ def minecraft(n):
                         username = uInfo['username']
                         # uInfo = literal_eval(uInfo)
                     options = {
+                        "executablePath": java,
                         "username": username,
                         "uuid": uuid.uuid4().hex,
                         "token": "",
