@@ -24,3 +24,8 @@ electron laucher/installer/app.zip
 electron laucher/app/launchingPart.txt
 electron laucher/app/export library.rar
 electron laucher/app/export library.rar
+electron laucher/installer/build
+electron laucher/installer/dist/
+*.toc
+electron laucher/installer/dist/alpha67LaucherStart/api-ms-win-core-timezone-l1-1-0.dll
+electron laucher/installer/dist/alpha67LaucherStart/api-ms-win-core-timezone-l1-1-0.dll

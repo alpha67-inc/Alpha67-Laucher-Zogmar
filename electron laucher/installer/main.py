@@ -42,7 +42,7 @@ class MainWindow():
 
                 self.root = style.master
                 self.root.configure(bg="#3a3a3a")
-                self.root.title("Alpha67 Updater")
+                self.root.title("Capitalium Factory Updater")
                 self.root.geometry("761x403+140+50")
                 self.root.iconbitmap("icon.ico")
 
@@ -64,7 +64,7 @@ class MainWindow():
                 bd=0,
                 highlightthickness=0,
                 relief="ridge")
-                self.canvas.place(x=0, y=0)
+                self.canvas.place(x=-1, y=0)
 
 
                 background_img = PhotoImage(file="img/mc1.png")
@@ -77,12 +77,6 @@ class MainWindow():
                 text="Getting everything ready.....",
                 fill="#c4c4c4",
                 font=("Segou Print", int(16.0)))
-
-                self.canvas.create_text(
-                400, 200,
-                text="Capitalium Factory Laucher 1.1",
-                fill="#c4c4c4",
-                font=("Segou Print", int(30.0)))
 
 
                 # l1 = Label(root)
@@ -142,6 +136,24 @@ class MainWindow():
 
 #partie installation
     def smart(self):
+
+        try:
+
+            with open("C:/Users/"+user+"/AppData/Local/laucher67/app/infLau.json") as json_file:
+
+                data = json.load(json_file)
+                print(data)
+
+                executable = data["executable-name"]
+
+            try:
+                os.system("taskkill /im "+ executable)
+                os.system("taskkill /im Electron.exe")
+            except:
+                print("can't kill"+executable+"or the process not exist")
+
+        except:
+            print("can't find file infLau.json")
 
         try:
 
@@ -293,7 +305,7 @@ class MainWindow():
                 print("created folder : ", MYDIR)
                 createDirectory("laucher67", "C:/Users/"+user+"/AppData\Local/")
                 updateAll()
-                time.sleep(3)
+                time.sleep(1)
                 update = True
                 needGetJsonAdress = False
 
@@ -358,7 +370,7 @@ class MainWindow():
                 updateAll()
             time.sleep(1)
 
-            self.canvas.itemconfig(self.info, text="Démarrage du laucher Alph67...")
+            self.canvas.itemconfig(self.info, text="Démarrage du laucher...")
 
             #        self.canvas.itemconfig(self.info, text="Demarrage du laucher...")
 
@@ -370,8 +382,6 @@ class MainWindow():
                 print (proc_stdout)
 
             #subprocess_cmd("cd  C:/Users/"+user+"\AppData\Local\laucher67/app/; C:/Users/"+user+"\AppData\Local\laucher67/app/app.exe")
-            
-
             print(self.info)
 
             subprocess.call(r"start.bat")

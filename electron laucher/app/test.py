@@ -14,9 +14,8 @@ def main():
         login_data = minecraft_launcher_lib.account.login_user(username_input.get(), password_input.get())
 
         options = {
-            "username": login_data["selectedProfile"]["name"],
-            "uuid": login_data["selectedProfile"]["id"],
-            "token": login_data["accessToken"]
+            "username": "vultorio",
+            "uuid":"f281053e121d4f9b8b690b2de83f98dc",
         }
         minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(version_select.get(), minecraft_directory, options)
 

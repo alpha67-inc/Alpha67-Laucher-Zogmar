@@ -10,6 +10,8 @@ import tkinter
 from tkinter import filedialog
 #from win10toast_click import ToastNotifier
 
+from zipfile import ZipFile
+
 import sys
 import pythonSide.appComponment.ModpackDownloader.version as version
 
@@ -156,8 +158,6 @@ def down():
         target = adress + "/ModPack.zip"
 
         # shutil.copyfile(original, target)
-
-        from zipfile import ZipFile
 
         with ZipFile('C:/Users/' + user + '/alpha67_MP/mods/mp.zip', 'r') as zip:
             zip.printdir()

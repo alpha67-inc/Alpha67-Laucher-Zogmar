@@ -81,6 +81,8 @@ def execute_command(command):
 
     print("save of starting command !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
+    print(command)
+
 
 
     logging.basicConfig(
@@ -136,6 +138,8 @@ def ok(pr):
     f.write(str(pr))
     f.close()
 
+
+#::::: pour lancer minecraft
 def minecraft(n):
 
     user = os.getlogin()
@@ -220,6 +224,9 @@ def minecraft(n):
 
             data = defaultSett
 
+
+        
+        #::::::: les settings ::::::::
         xx = data["gameResolution"]["x"]
 
         y = data["gameResolution"]["y"]
@@ -232,17 +239,27 @@ def minecraft(n):
 
         settings = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json'
 
-        if java == "auto":
+        """if java == "auto":
             java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
             with open(settings, 'r+') as f:
                 data = json.load(f)
                 data['java'] = java 
                 json.dump(data)
-                f.close
+                f.close"""
+
+        
+        version = n[1]
+        motor = n[0]
+        print("motor is : ", motor)
+        login = getSelectVersion()
+        print("the login methode is : ",login)
 
 
-        if java == "auto":
-            java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
+        if java == "auto" or java == "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe" or java == "C:/Users/"+user+"/AppData/Roaming/.alpha67/alpha/runtime/jre-legacy/windows-x64/jre-legacy/bin/javaw.exe":
+            if "17" in str(version) or "18" in str(version) or "19" in str(version) or "20" in str(version):
+                java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/jdk-18.0.2/bin/javaw.exe"
+            else:
+                java = "C:/Users/"+user+"/AppData/Roaming/.alpha67/alpha/runtime/jre-legacy/windows-x64/jre-legacy/bin/javaw.exe"
             with open('C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/settings.json', 'r+') as f:
                 data = json.load(f)
                 data['java'] = java  # <--- add `id` value.
@@ -252,12 +269,12 @@ def minecraft(n):
                 print("save : ", data)
                 json.dump(data, outfile)
 
-        version = n[1]
-        motor = n[0]
-        print("motor is : ", motor)
-        login = getSelectVersion()
-        print("the login methode is : ",login)
+            print("javavavavavavavavavavavavavavavavavavavavava"+java)
+        
 
+
+
+        #::::::::::::::::::::::: version alpha :::::::::::::::::::::::::::::::::
         if version == "alpha67" and login != None:
             directory = 'C:/Users/'+user+'\AppData\Roaming\.alpha67/alpha/'
             print('start alpha laucher to connect to the server')
@@ -294,7 +311,6 @@ def minecraft(n):
             forge_version = minecraft_launcher_lib.forge.find_forge_version(version)
 
 
-
             print(forge_version)
             forge_version = "1.16.5-36.2.34"
 
@@ -305,7 +321,8 @@ def minecraft(n):
                 forgeLauch = None
             print(forgeLauch)
 
-            # if you lauche minecraft vanilla
+
+            #:::::::::install the vanialla version (sert à rien) :::::::::::::
             if motor == "vanilla":
                 minecraft_launcher_lib.install.install_minecraft_version(version, directory, callback=callback)
 
@@ -316,31 +333,34 @@ def minecraft(n):
 
             forge_version = "1.16.5-36.2.34"
 
-            # if you lauche ;inecrqft forge
-            if motor == "Forge":
-                if forge_version == "None":
-                    print("version non disponible de forge")
 
-                else:
-                    def checkVersionDoawnload():
-                        try:
-                            directory_mod = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/versions'
-                            files = os.listdir(directory_mod)
-                            for f in files:
-                                print("file: " + f)
-                                if forgeLauch == f:
-                                    eel.gameLauch()()
-                                    print("version already download lauching minecraft")
-                                    return True
-                        except:
-                            None
+            #::::::::::: install la version forge for the server connection ::::::::::::::::::::::
+            try:
+                if motor == "Forge":
+                    if forge_version == "None":
+                        print("version non disponible de forge")
 
-                    if checkVersionDoawnload() == None:
+                    else:
+                        def checkVersionDoawnload():
+                            try:
+                                directory_mod = 'C:/Users/'+user+'/AppData/Roaming\.alpha67/alpha/versions'
+                                files = os.listdir(directory_mod)
+                                for f in files:
+                                    print("file: " + f)
+                                    if forgeLauch == f:
+                                        #eel.gameLauch()()
+                                        print("version already download lauching minecraft")
+                                        return True
+                            except:
+                                None
 
-                        print("doawnloading:" + forgeLauch)
-                        minecraft_launcher_lib.forge.install_forge_version(forge_version, directory, callback=callback)
-                        print(forgeLauch)
+                        if checkVersionDoawnload() == None:
 
+                            print("doawnloading:" + forgeLauch)
+                            minecraft_launcher_lib.forge.install_forge_version(forge_version, directory, callback=callback)
+                            print(forgeLauch)
+            except:
+                print("merde ::::::::::::::::::::::::::::::::::::::::::::::::")
 
             #self.ui.play.show()
             #self.ui.download.hide()
@@ -349,7 +369,8 @@ def minecraft(n):
             print("the login methode is : ",login)
             ok("1000")
 
-            ###########
+            #:::::::::::::::::::::::::: lancement du jeu ::::::::::::::::::::::::::
+
             if login == "mojang":
                 print("okok")
                 with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
@@ -392,9 +413,7 @@ def minecraft(n):
                     "username": login_data["selectedProfile"]["name"],
                     "uuid": login_data["selectedProfile"]["id"],
                     "token": login_data["accessToken"],
-                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
-                    "server": "capitalium-factory.fr",
-                    "port": "25565"
+                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
 
                 }
 
@@ -423,9 +442,7 @@ def minecraft(n):
                     "username": uInfo["name"],
                     "uuid": uInfo["id"],
                     "token": uInfo["access_token"],
-                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"],
-                    "server": "capitalium-factory.fr",
-                    "port": "25565"
+                    "jvmArguments": ["-Xmx"+max+"m", "-Xms"+min+"m"]
                 }
 
                 if motor == "vanilla":
@@ -458,9 +475,7 @@ def minecraft(n):
                     "username": username,
                     "uuid": uuid.uuid4().hex,
                     "token": "",
-                    "jvmArguments": [ma, mi],
-                    "server": "capitalium-factory.fr",
-                    "port": "25565"
+                    "jvmArguments": [ma, mi]
                 }
 
                 print(forge_version)
@@ -482,6 +497,9 @@ def minecraft(n):
                     except:
                         None
 
+
+
+        #::::::::::::::::::::: random version ::::::::::::::::::::
         elif(login != None):
 
             version = n[1]
@@ -492,7 +510,8 @@ def minecraft(n):
                 forgeLauch = forge_version.replace("-", "-forge-")
                 print(forgeLauch)
             except Exception as e: 
-                print(e)
+                eel.message("An error has occurred, this is probably due to the fact that there is no forge version available for your version of minecraft.")
+
             
             motor = n[0]
             user = os.getlogin()
@@ -502,7 +521,7 @@ def minecraft(n):
             print('start minecraft')
             max_value = [0]
 
-            #@eel.expose
+            #::::::::::: install la version ::::::::::::::
             def installVersion(needReinstall):
 
                 version = n[1]
@@ -543,7 +562,7 @@ def minecraft(n):
                 
                 
 
-                #if you lauche minecraft vanilla
+                #::::::::::::::: install vanilla :::::::::::::
                 print("the motor is : ",motor)
                 if motor == "vanilla":
                     print("dowload of minecraft vanilla : ",version)
@@ -608,7 +627,7 @@ def minecraft(n):
                     a = 128
                     ok(a)
 
-                #if you lauche ;inecrqft forge
+                #::::::::::::::::::::::: intall forge :::::::::::
                 if motor == "forge":
                     if forge_version == "None":
                         print("version non disponible de forge")
@@ -652,9 +671,11 @@ def minecraft(n):
             #self.ui.play.show()
             #self.ui.download.hide()
 
+
+            #:::::::::::::::::::::::: lauch game random ::::::::::::::::::::::
             def lauchGame():
                 print("pppppppppppppppppppppp"+login+motor)
-                ###########
+                ################################################################"####################"
                 if login == "mojang":
                     print("okok")
                     with open('C:/Users/' + user + '\AppData\Roaming\.alpha67/alpha/cred.json', 'r') as file:
