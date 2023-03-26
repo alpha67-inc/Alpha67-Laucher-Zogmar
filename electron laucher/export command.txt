@@ -1,1 +1,0 @@
-python -m eel app.py web --noconsole --icon "icon.ico"
